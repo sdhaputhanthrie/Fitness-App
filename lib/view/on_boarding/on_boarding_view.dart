@@ -14,6 +14,8 @@ class _OnBoardingViewState extends State<OnBoardingView> {
 
   @override
   Widget build(BuildContext context) {
+    var media = MediaQuery.of(context).size;
+
     return Scaffold(
       backgroundColor: TColor.white,
       body: Stack(
@@ -21,10 +23,21 @@ class _OnBoardingViewState extends State<OnBoardingView> {
           PageView.builder(
             controller: controller,
             itemBuilder: (context, index) {
-            return Container();
-          } )
+
+              return SizedBox(
+                width:media.width,
+                height: media.height,
+                child: Column(
+                   mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Image.asset("assets/img/co (1).png", width: media.width , fit:BoxFit.fitWidth, )
+                 ],
+                ),
+              );
+            },)
+          
         ],
-      ),            
-    );    
+      ),
+    );
   }
 }
