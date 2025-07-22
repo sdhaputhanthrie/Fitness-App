@@ -22,6 +22,7 @@ class _OnBoardingViewState extends State<OnBoardingView> {
         children: [
           PageView.builder(
             controller: controller,
+            itemCount: 3,
             itemBuilder: (context, index) {
 
               return SizedBox(
@@ -30,6 +31,7 @@ class _OnBoardingViewState extends State<OnBoardingView> {
                 child: Column(
                    mainAxisAlignment: MainAxisAlignment.start,
                 children: [
+                  SizedBox(height: 30), 
                   Image.asset("assets/img/co (1).png", width: media.width , fit:BoxFit.fitWidth, )
                  ],
                 ),
