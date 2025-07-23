@@ -11,7 +11,20 @@ class OnBoardingView extends StatefulWidget {
 }
 
 class _OnBoardingViewState extends State<OnBoardingView> {
+  int selectPage = 0;
   PageController controller = PageController();
+
+  @override
+  void initState() {
+    super.initState();
+
+    controller.addListener(() {
+      selectPage = controller.page?.round() ?? 0;
+      setState(() {
+        // Update the state to reflect the current page
+      });
+    });
+  }
 
   List pageArr = [
     {
@@ -36,7 +49,7 @@ class _OnBoardingViewState extends State<OnBoardingView> {
       "title": "Improve Sleep\nQuality",
       "subtitle":
           "Improve the quality of your sleep with us, good quality sleep can bring a good mood in the morning",
-      "image": "assets/img/co (4).png",
+      "image": "assets/img/co (5).png",
     },
   ];
 
@@ -55,17 +68,57 @@ class _OnBoardingViewState extends State<OnBoardingView> {
             itemBuilder: (context, index) {
               var pObj = pageArr[index] as Map? ?? {};
               return OnBoardingPage(pObj: pObj);
-            }
-          ),
-
-          Container(
-            padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
-            color: Colors.blue,
-            child: IconButton(icon: Icon(Icons.navigate_next, color: TColor.white,),color: TColor.primaryColor1 , onPressed: (){
-
             },
           ),
-          )
+
+          SizedBox(
+            width: 120,
+            height: 120,
+            child: Stack(
+              alignment: Alignment.center,
+              children: [
+
+                SizedBox(  
+                  width: 70,
+                  height: 70,
+                  child: CircularProgressIndicator(
+                    color:TColor.primaryColor1,
+                    value: selectPage / 4,
+                    strokeWidth: 2,
+                  ),
+                ),
+
+                Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 25, vertical: 25),
+                  width: 50,
+                  height: 50,
+                  decoration: BoxDecoration(
+                    color: TColor.primaryColor1,
+                    borderRadius: BorderRadius.circular(35),
+                  ),
+                  child: IconButton(
+                    icon: Icon(Icons.navigate_next, color: TColor.white),
+                    onPressed: () {
+                      if (selectPage < 3) {
+                        selectPage = selectPage + 1;
+                
+                        controller.jumpToPage(selectPage);
+
+                        setState(() {
+                          
+                        });
+
+
+                      } else {
+                        print("Open Welcome Screen");
+                      }
+                    },
+                  ),
+                ),
+                
+              ],
+            ),
+          ),
         ],
       ),
     );
