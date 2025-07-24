@@ -1,4 +1,5 @@
 import 'package:fitness/view/on_boarding/on_boarding_view.dart';
+import 'package:fitness/view/on_boarding/started_view.dart';
 import 'package:flutter/material.dart';
 import 'package:fitness/common/colo_extension.dart';
 
@@ -32,9 +33,9 @@ class MyApp extends StatelessWidget {
         // This works for code too, not just values: Most code changes can be
         // tested with just a hot reload.
         primaryColor: TColor.primaryColor1,
-        fontFamily: "Poppins",
+        fontFamily: "Poppins"
       ),
-      home: const OnBoardingView(),
+      home: const StartedView(),
     );
   }
 }
