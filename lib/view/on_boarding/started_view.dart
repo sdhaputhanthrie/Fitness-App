@@ -1,5 +1,6 @@
 import 'package:fitness/common/colo_extension.dart';
 import 'package:fitness/common_widget/round_buttom.dart';
+import 'package:fitness/view/on_boarding/on_boarding_view.dart';
 import 'package:flutter/material.dart';
 
 class StartedView extends StatefulWidget {
@@ -19,11 +20,13 @@ class _StartedViewState extends State<StartedView> {
       body: Container(
         width: media.width,
         decoration: BoxDecoration(
-          gradient: LinearGradient(
-            colors: TColor.primaryG,
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-          ),
+          gradient: isChangeColor
+              ? LinearGradient(
+                  colors: TColor.primaryG,
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                )
+              : null,
         ),
 
         child: Column(
@@ -47,8 +50,26 @@ class _StartedViewState extends State<StartedView> {
 
             SafeArea(
               child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 15),
-                child: RoundButtom(title: "Get Started", onPressed: () {}),
+                padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
+                child: RoundButtom(
+                  title: "Get Started",
+                  type: isChangeColor
+                      ? RoundButtonType.textGradient
+                      : RoundButtonType.bgGradient,
+                  onPressed: () {
+
+                    if(isChangeColor) {
+                      Navigator.push(context, MaterialPageRoute(
+                        builder: (context) => const OnBoardingView(),
+                      ));
+                    }else{
+                      setState(() {
+                        isChangeColor = true;
+                      }
+                    );
+                    }
+                  },
+                ),
               ),
             ),
           ],

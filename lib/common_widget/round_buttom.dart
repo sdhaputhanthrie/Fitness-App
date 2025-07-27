@@ -21,7 +21,7 @@ class RoundButtom extends StatelessWidget {
         borderRadius: BorderRadius.circular(25),
         boxShadow: type == RoundButtonType.bgGradient
             ?const [BoxShadow( color: Colors.black26, blurRadius: 2, offset: Offset(0,2))] : null ),
-            
+             
       child: MaterialButton(
         onPressed: onPressed,
         height: 50,
@@ -32,7 +32,7 @@ class RoundButtom extends StatelessWidget {
         color: type == RoundButtonType.bgGradient? Colors.transparent:TColor.white,
         child: type == RoundButtonType.bgGradient ? Text(title,  
             style: TextStyle(
-              color: TColor.primaryColor1,
+              color: TColor.white,
               fontSize: 16,
               fontWeight: FontWeight.w700))
               
