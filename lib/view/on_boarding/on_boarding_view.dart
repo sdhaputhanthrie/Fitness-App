@@ -1,4 +1,5 @@
 import 'package:fitness/common_widget/on_boarding_page.dart';
+import 'package:fitness/view/login/signup_view.dart';
 import 'package:flutter/material.dart';
 
 import '../../common/colo_extension.dart';
@@ -77,19 +78,21 @@ class _OnBoardingViewState extends State<OnBoardingView> {
             child: Stack(
               alignment: Alignment.center,
               children: [
-
-                SizedBox(  
+                SizedBox(
                   width: 70,
                   height: 70,
                   child: CircularProgressIndicator(
-                    color:TColor.primaryColor1,
+                    color: TColor.primaryColor1,
                     value: (selectPage + 1) / 4,
                     strokeWidth: 2,
                   ),
                 ),
 
                 Container(
-                  margin: const EdgeInsets.symmetric(horizontal: 25, vertical: 25),
+                  margin: const EdgeInsets.symmetric(
+                    horizontal: 25,
+                    vertical: 25,
+                  ),
                   width: 50,
                   height: 50,
                   decoration: BoxDecoration(
@@ -101,21 +104,28 @@ class _OnBoardingViewState extends State<OnBoardingView> {
                     onPressed: () {
                       if (selectPage < 3) {
                         selectPage = selectPage + 1;
-                
+
+                        controller.animateToPage(
+                          selectPage,
+                          duration: const Duration(milliseconds: 300),
+                          curve: Curves.bounceIn,
+                        );
+
                         controller.jumpToPage(selectPage);
 
-                        setState(() {
-                          
-                        });
-
-
+                        setState(() {});
                       } else {
                         print("Open Welcome Screen");
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const SignUpView(),
+                          ),
+                        );
                       }
                     },
                   ),
                 ),
-                
               ],
             ),
           ),
