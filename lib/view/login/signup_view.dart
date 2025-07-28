@@ -1,5 +1,6 @@
 
 import 'package:fitness/common/colo_extension.dart';
+import 'package:fitness/common_widget/round_textfield.dart';
 import 'package:flutter/material.dart';
 
 class SignUpView extends StatefulWidget {
@@ -10,50 +11,65 @@ class SignUpView extends StatefulWidget {
 }
 
 class  _SignUpViewState extends State <SignUpView> {
+
+  bool isChecked = false;
   @override
   Widget build(BuildContext context) {
-    var meidia = MediaQuery.of(context).size;
+    var media = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: TColor.white,
       body: SingleChildScrollView(
         child:SafeArea(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Text("Hey there," ,style: TextStyle(color:TColor.gray,fontSize: 16),),
-              Text("Create an Account," ,style: TextStyle(color:TColor.black,fontSize: 20,fontWeight: FontWeight.w700),),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal:20 ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Text("Hey there," ,style: TextStyle(color:TColor.gray,fontSize: 16),),
+                Text("Create an Account," ,style: TextStyle(color:TColor.black,fontSize: 20,fontWeight: FontWeight.w700),),
+            
+                SizedBox(height: media.height * 0.05,),
+                const RoundTextfield(hitText: "First name", icon:"assets/img/user.png", ),
 
-              SizedBox(height: meidia.height * 0.05,),
-              
-              Container(
-                decoration: BoxDecoration(color: TColor.lightGray,
-                  borderRadius: BorderRadius.circular(15)),
-                  child: TextField(
-                    decoration: InputDecoration(
-                      contentPadding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
-                      enabledBorder: InputBorder.none,
-                      focusedBorder: InputBorder.none,
-                      hintText: "First Name",
-                      prefixIcon: Container(
-                        alignment: Alignment.center,
-                        width: 15, height: 15,
-                        child: Image.asset("assets/img/user.png", width: 20, color: TColor.gray, height: 20, fit: BoxFit.contain)),
-                      hintStyle: TextStyle(
-                        color: TColor.gray,
-                        fontSize: 12,
-                      ),
-                    ),
-                  )
-                ),
-              
+                SizedBox(height: media.height * 0.02,),
+                const RoundTextfield(hitText: "Last Name", icon:"assets/img/user.png", ),
 
-              
+                SizedBox(height: media.height * 0.02,),
+                const RoundTextfield(hitText: "Email", icon:"assets/img/mail.png", keyboardType: TextInputType.emailAddress, ),
 
+                 SizedBox(height: media.height * 0.02,),
+                 RoundTextfield(hitText: "Password", icon:"assets/img/lock.png",obscureText: true, rightIcon: TextButton(onPressed:(){}, child: Container(
+            alignment: Alignment.center,
+            width: 15,
+            height: 15,
+            child: Image.asset(
+              " assets/img/show_password.png",
+              width: 20,
+              height: 20,
+              fit: BoxFit.contain,
+              color: TColor.gray,
+            ),
+          ),), ), 
           
-            ],
+
+          Row(children: [IconButton(onPressed:(){}, 
+          icon: Icon(
+          isChecked ? Icons.check_box_outlined : Icons.check_box_outline_blank_outlined,
+          
+          color:TColor.gray ,))],)
+
+ 
+            
+              ],
+            ),
           ),
         ),
       )
     );
   }
 }
+                
+                
+            
+                
+           
