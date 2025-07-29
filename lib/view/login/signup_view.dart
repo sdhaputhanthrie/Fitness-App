@@ -99,10 +99,67 @@ class  _SignUpViewState extends State <SignUpView> {
               Container(width: double.maxFinite,height:1,color: TColor.gray)),
           ],
           ),
+          SizedBox(height: media.height * 0.04,),
+
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+            GestureDetector(
+              onTap: () {
+                
+              },child: Container(
+                width: 50,
+                height: 50,
+                alignment: Alignment.center,
+                decoration: BoxDecoration(
+                color: TColor.white,
+                 border: Border.all(width:1, color: TColor.gray.withOpacity(0.5),),
+                borderRadius: BorderRadius.circular(10),),
+                
+              child:Image.asset("assets/img/google.png",width: 20, height: 20,
+              ),
+              ),
+
+              
+              ),
+
+              SizedBox(width: media.height * 0.04,),
+
+               GestureDetector(
+              onTap: () {
+                
+              },child: Container(
+                width: 50,
+                height: 50,
+                alignment: Alignment.center,
+                decoration: BoxDecoration(
+                color: TColor.white,
+                 border: Border.all(width:1, color: TColor.gray.withOpacity(0.5),),
+                borderRadius: BorderRadius.circular(10),),
+                
+              child:Image.asset("assets/img/facebook.png",width: 45, height: 45,
+              ),
+              ),
+              
+              )
+            
+          ],),
+
           SizedBox(height: media.height * 0.04,), 
-          TextButton(onPressed:(){}, child: Text("Already have an account? Login",
+
+          TextButton(onPressed:(){}, child: Row(
+            mainAxisSize: MainAxisSize.min,
+          
+          children: [ Text("Already have an account?",
               style: TextStyle(color: TColor.black,fontSize: 14, fontWeight: FontWeight.w700 ),
-              ),),
+              ),
+
+             Text(" Login",
+              style: TextStyle(color: TColor.black,fontSize: 14, fontWeight: FontWeight.w700 ),
+              )
+              ]),),
+
+
           SizedBox(height: media.height * 0.04,), 
 
         
