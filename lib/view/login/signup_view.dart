@@ -123,7 +123,7 @@ class  _SignUpViewState extends State <SignUpView> {
               
               ),
 
-              SizedBox(width: media.height * 0.04,),
+              SizedBox(width: media.height * 0.04,), 
 
                GestureDetector(
               onTap: () {
