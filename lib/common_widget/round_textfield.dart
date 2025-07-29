@@ -30,7 +30,7 @@ class RoundTextfield extends StatelessWidget {
       ),
       child: TextField(
         controller: controller,
-        keyboardType: TextInputType.none,
+        keyboardType: keyboardType,
         obscureText: obscureText,
 
         decoration: InputDecoration(

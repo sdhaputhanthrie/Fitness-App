@@ -4,18 +4,18 @@ import 'package:flutter/material.dart';
 enum RoundButtonType { bgGradient, textGradient }
   
 
-class RoundButtom extends StatelessWidget {
+class RoundButton extends StatelessWidget {
   final String title;
   final RoundButtonType type;
   final VoidCallback onPressed;
-  const RoundButtom({super.key, required this.title, this.type =RoundButtonType.textGradient, required this.onPressed});
+  const RoundButton({super.key, required this.title, this.type =RoundButtonType.bgGradient, required this.onPressed});
 
   @override
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
         gradient: LinearGradient(
-             colors: TColor.primaryG,
+             colors: TColor.primaryG, 
              begin: Alignment.centerLeft,
              end: Alignment.centerRight),
         borderRadius: BorderRadius.circular(25),

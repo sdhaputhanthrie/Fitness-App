@@ -1,5 +1,5 @@
 import 'package:fitness/common/colo_extension.dart';
-import 'package:fitness/common_widget/round_buttom.dart';
+import 'package:fitness/common_widget/round_button.dart';
 import 'package:fitness/view/on_boarding/on_boarding_view.dart';
 import 'package:flutter/material.dart';
 
@@ -51,7 +51,7 @@ class _StartedViewState extends State<StartedView> {
             SafeArea(
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
-                child: RoundButtom(
+                child: RoundButton(
                   title: "Get Started",
                   type: isChangeColor
                       ? RoundButtonType.textGradient
