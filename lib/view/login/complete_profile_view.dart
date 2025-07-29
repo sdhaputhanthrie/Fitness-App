@@ -12,13 +12,18 @@ class CompleteProfileView extends StatefulWidget {
 class _CompleteProfileViewState extends State<CompleteProfileView> {
   @override
   Widget build(BuildContext context) {
+
+    var media = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: TColor.white,
       body: SingleChildScrollView(
         child: SafeArea(
-          child: Column(children: [
-            
-          ],),
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(children: [
+             Image.asset("assets/img/gym.png",width: media.width ,fit:BoxFit.fitWidth) 
+            ],),
+          ),
         ),
       ),
     );
