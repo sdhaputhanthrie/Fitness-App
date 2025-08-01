@@ -25,13 +25,40 @@ class _WhatYourGoalViewState extends State<WhatYourGoalView> {
 
          Center(
            child: CarouselSlider(
-                   items: ["assets/img/goal_1.png","assets/img/goal_2.png","assets/img/goal_3.png"].map((gObj) => Container(decoration: BoxDecoration(gradient: LinearGradient(colors: TColor.primaryG,begin: Alignment.topLeft,end: Alignment.bottomRight),borderRadius: BorderRadius.circular(25),),)).toList(),
+                   items: ["assets/img/goal__1.png","assets/img/goal__2.png","assets/img/goal__3.png"].map((gObj) => Container(decoration: BoxDecoration(gradient: LinearGradient(colors: TColor.primaryG,begin: Alignment.topLeft,end: Alignment.bottomRight),borderRadius: BorderRadius.circular(25),),
+                   padding:  EdgeInsets.symmetric(vertical: media.width * 0.01, horizontal: 20),
+                   alignment: Alignment.center,
+                   child: Column(
+                    children: [
+                      
+                      Image.asset(gObj, width: media.width * 0.5, fit: BoxFit.fitWidth,),
+
+                      SizedBox(height: media.height * 0.1,),
+
+                      Text(
+                    "What is your goal?",
+                    style: TextStyle(color: TColor.white, fontSize: 20, fontWeight: FontWeight.w700,),
+                  ),
+                  
+                  Text(
+                    "Helps us pick the right plan!",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: TColor.white,
+                      fontSize: 16,
+                                          
+                    ),
+                  ),
+                    ],
+                   
+                   ),
+                   ),).toList(),
                    carouselController: buttonCarouselController,
                    options: CarouselOptions(
             autoPlay: false,
             enlargeCenterPage: true,
-            viewportFraction: 0.75,
-            aspectRatio: 0.8,
+            viewportFraction: 0.7,
+            aspectRatio: 0.74,
             initialPage: 0,
                    ),
                  ),
