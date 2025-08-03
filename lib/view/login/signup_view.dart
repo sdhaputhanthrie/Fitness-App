@@ -2,6 +2,7 @@ import 'package:fitness/common/colo_extension.dart';
 import 'package:fitness/common_widget/round_button.dart';
 import 'package:fitness/common_widget/round_textfield.dart';
 import 'package:fitness/view/login/complete_profile_view.dart';
+import 'package:fitness/view/login/login_view.dart';
 import 'package:flutter/material.dart';
 
 class SignUpView extends StatefulWidget {
@@ -25,6 +26,8 @@ class _SignUpViewState extends State<SignUpView> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
+
+                SizedBox(height: media.height * 0.03),
                 Text(
                   "Hey there",
                   style: TextStyle(color: TColor.gray, fontSize: 16),
@@ -206,7 +209,14 @@ class _SignUpViewState extends State<SignUpView> {
                 SizedBox(height: media.height * 0.04),
 
                 TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const LoginView(),
+                      ),
+                    );
+                  },
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
 
@@ -214,7 +224,7 @@ class _SignUpViewState extends State<SignUpView> {
                       Text(
                         "Already have an account?",
                         style: TextStyle(
-                          color: TColor.black,
+                          color: TColor.gray,
                           fontSize: 14,
                           fontWeight: FontWeight.w700,
                         ),
