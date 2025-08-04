@@ -1,5 +1,6 @@
 
 import 'package:fitness/common/colo_extension.dart';
+import 'package:fitness/view/main_tab/main_tab_view.dart';
 import 'package:flutter/material.dart';
 
 import '../../common_widget/round_button.dart';
@@ -50,12 +51,12 @@ class _WelcomeViewState extends State<WelcomeView> {
                   RoundButton(
                     title: "Go to Home",
                     onPressed: () {
-                      //Navigator.push(
-                        //context,
-                        //MaterialPageRoute(
-                          //builder: (context) => const WelcomeView(),
-                        //),
-                      //);
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const MainTabView(),
+                        ),
+                      );
                     },
                   ),
                 SizedBox(height: media.height * 0.1),
