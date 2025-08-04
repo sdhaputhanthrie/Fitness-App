@@ -18,8 +18,8 @@ class _MainTabViewState extends State<MainTabView> {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: SizedBox(width: 70,height: 70,child: InkWell(onTap: (){},child: Container(
        
-            width: 65,
-            height: 65,
+            width: 50,
+            height: 50,
             decoration: BoxDecoration(
               gradient: LinearGradient(
               colors: TColor.primaryG,),
