@@ -77,19 +77,18 @@ class _LoginViewState extends State<LoginView> {
                   children: [
                    
 
-                    Padding(
-                      padding: const EdgeInsets.only(top: 10),
-                      child: Expanded(
-                        child: Text(
+                    
+                           Text(
                           "Forget your password?",
                           style: TextStyle(color: TColor.gray, fontSize: 10,decoration: TextDecoration.underline),
                         ),
-                      ),
-                    ),
+                        
+                    
                   ],
                 ),
+              
 
-                Spacer(),
+                const Spacer(),
 
                 RoundButton(
                   title: "Login",
