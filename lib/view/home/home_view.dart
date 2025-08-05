@@ -56,8 +56,18 @@ class _HomeViewState extends State<HomeView> {
             }, icon: Image.asset("assets/img/notification_active.png",width: 25,height: 25, fit: BoxFit.fitHeight,)),
                   
                 ],),
+
+                 SizedBox(height: media.height * 0.02),
+
+                 Container( 
+                  height: media.height * 0.4,
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(colors: TColor.secondaryG),
+                    borderRadius: BorderRadius.circular(media.width * 0.1) ),
+                    )
+
             
-            
+              
                 
               ],
             ),
