@@ -61,33 +61,37 @@ class _HomeViewState extends State<HomeView> {
 
                  Container( 
                   height: media.height * 0.2,
-                  padding: EdgeInsets.symmetric(horizontal: 25, vertical: 15),
+                 
                   decoration: BoxDecoration(
                     gradient: LinearGradient(colors: TColor.primaryG),
                     borderRadius: BorderRadius.circular(media.width * 0.1) ),
 
                     child: Stack(
                       children: [
-                        Row(children: [
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-
-                            children: [
-                              Text(
-                    "BMI (Body Mass Index)",
-                    style: TextStyle(color: TColor.white, fontSize:14, fontWeight: FontWeight.w700),
-                  ),
-                  Text(
-                    "You have a normal weight",
-                    style: TextStyle(
-                      color: TColor.white.withOpacity(0.7),fontSize: 12,
-                      
-                    ),
-                  ),
-                            ],
-                          )
-                        ],)
+                        Padding(
+                           padding: EdgeInsets.symmetric(horizontal: 25, vertical: 15),
+                          child: Row(children: [
+                            Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                          
+                              children: [
+                                Text(
+                                              "BMI (Body Mass Index)",
+                                              style: TextStyle(color: TColor.white, fontSize:14, fontWeight: FontWeight.w700),
+                                            ),
+                                            Text(
+                                              "You have a normal weight",
+                                              style: TextStyle(
+                                                color: TColor.white.withOpacity(0.7),fontSize: 12,
+                                                
+                                              ),
+                                            ),
+                                            SizedBox(height: media.height * 0.01),
+                              ],
+                            )
+                          ],),
+                        )
                         
                       ],
                     ),
