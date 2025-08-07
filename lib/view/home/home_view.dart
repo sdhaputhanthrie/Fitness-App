@@ -192,13 +192,44 @@ class _HomeViewState extends State<HomeView> {
                         ),
                         SizedBox(height: media.height * 0.02),
                        
-                       Container(
-                padding: EdgeInsets.symmetric(
-                  horizontal: 15,
-                  vertical: 15,
-                ),
+                       
+
+                        Container(
+               
+                
                 decoration: BoxDecoration(color: TColor.primaryColor2.withOpacity(0.3), borderRadius: BorderRadius.circular(15),),
-                       )
+
+                child:Stack(
+                  alignment:Alignment.topLeft ,
+                  children: [
+                    Padding(padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      mainAxisSize: MainAxisSize.min,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [ 
+                        Text(
+                                  "Heart Rate",
+                                  style: TextStyle(
+                                    color: TColor.black,
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w700,
+                                  ),
+                                ),
+                                Text(
+                                  "78 BPM",
+                                  style: TextStyle(
+                                    color: TColor.white.withOpacity(0.7),
+                                    fontSize: 12,
+                                  ),
+                                ),
+                      ],
+                    )
+                    )
+                  ],
+                )
+
+                        ),
                        
               ],
             ),
