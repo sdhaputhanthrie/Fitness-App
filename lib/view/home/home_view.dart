@@ -21,6 +21,7 @@ class _HomeViewState extends State<HomeView> {
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 15),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -62,6 +63,8 @@ class _HomeViewState extends State<HomeView> {
                 SizedBox(height: media.height * 0.02),
 
                 Container(
+
+                   
                   height: media.height * 0.2,
 
                   decoration: BoxDecoration(
@@ -74,7 +77,7 @@ class _HomeViewState extends State<HomeView> {
                       Padding(
                         padding: EdgeInsets.symmetric(
                           horizontal: 25,
-                          vertical: 15,
+                          vertical: 25,
                         ),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -100,7 +103,7 @@ class _HomeViewState extends State<HomeView> {
                                     fontSize: 12,
                                   ),
                                 ),
-                                SizedBox(height: media.height * 0.01),
+                                SizedBox(height: media.height * 0.05),
 
                                 SizedBox(
                                   width: 120,
@@ -127,7 +130,7 @@ class _HomeViewState extends State<HomeView> {
                                           pieTouchResponse,
                                         ) {},
                                   ),
-                                  startDegreeOffset: 180,
+                                  startDegreeOffset: 250,
                                   borderData: FlBorderData(show: false),
                                   sectionsSpace: 1,
                                   centerSpaceRadius: 0,
@@ -141,6 +144,62 @@ class _HomeViewState extends State<HomeView> {
                     ],
                   ),
                 ),
+              
+               SizedBox(height: media.height * 0.02),
+               Container(
+                padding: EdgeInsets.symmetric(
+                  horizontal: 15,
+                  vertical: 15,
+                ),
+                decoration: BoxDecoration(color: TColor.primaryColor2.withOpacity(0.3), borderRadius: BorderRadius.circular(15),),
+
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+
+                  children: [ 
+                   Text(
+                          "Today Target" ,
+                          style: TextStyle(
+                            color: TColor.black,
+                            fontSize: 14,
+                            fontWeight: FontWeight.w700,
+                          ),
+                        ),
+
+                         SizedBox(
+                                  width: 90,
+                                  height: 35,
+                                  child: RoundButton(
+                                    title: "Check",
+                                    type: RoundButtonType.bgGradient,
+                                    fontSize: 10,
+                                    fontWeight: FontWeight.w600,
+                                    onPressed: () {},
+                                  ),
+                                ),
+                            
+                ],),
+               ),
+               SizedBox(height: media.height * 0.02),
+
+                Text(
+                          "Activity Status" ,
+                          style: TextStyle(
+                            color: TColor.black,
+                            fontSize: 16,
+                            fontWeight: FontWeight.w700,
+                          ),
+                        ),
+                        SizedBox(height: media.height * 0.02),
+                       
+                       Container(
+                padding: EdgeInsets.symmetric(
+                  horizontal: 15,
+                  vertical: 15,
+                ),
+                decoration: BoxDecoration(color: TColor.primaryColor2.withOpacity(0.3), borderRadius: BorderRadius.circular(15),),
+                       )
+                       
               ],
             ),
           ),
@@ -159,18 +218,18 @@ class _HomeViewState extends State<HomeView> {
         case 0:
           return PieChartSectionData(
             color: color0,
-            value: 25,
+            value: 33,
             title: '',
-            radius: 45,
+            radius: 50,
             titlePositionPercentageOffset: 0.55,
-            
+            badgeWidget: Text("20,1",style: TextStyle(color: Colors.white,fontSize: 12, fontWeight: FontWeight.w700),)
           );
         case 1:
           return PieChartSectionData(
             color: Colors.white,
             value: 75,
             title: '',
-            radius: 30,
+            radius: 42,
             titlePositionPercentageOffset: 0.55,
 
           );
