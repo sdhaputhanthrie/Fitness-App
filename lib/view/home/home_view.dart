@@ -76,7 +76,7 @@ class _HomeViewState extends State<HomeView> {
       ),
     ];
 
-    final tooltipsOnBar = lineBarsData[0];
+    final tooltipsOnBar = lineBarsData[0]; 
     return Scaffold(
       backgroundColor: TColor.white,
       body: SingleChildScrollView(
@@ -312,6 +312,94 @@ class _HomeViewState extends State<HomeView> {
                           ],
                         ),
                       ),
+                      LineChart(
+            LineChartData(
+              showingTooltipIndicators: showingTooltipOnSpots.map((index) {
+                return ShowingTooltipIndicators([
+                  LineBarSpot(
+                    tooltipsOnBar,
+                    lineBarsData.indexOf(tooltipsOnBar),
+                    tooltipsOnBar.spots[index],
+                  ),
+                ]);
+              }).toList(),
+              lineTouchData: LineTouchData(
+                enabled: true,
+                handleBuiltInTouches: false,
+                touchCallback:
+                    (FlTouchEvent event, LineTouchResponse? response) {
+                  if (response == null || response.lineBarSpots == null) {
+                    return;
+                  }
+                  if (event is FlTapUpEvent) {
+                    final spotIndex = response.lineBarSpots!.first.spotIndex;
+                    setState(() {
+                      if (showingTooltipOnSpots.contains(spotIndex)) {
+                        showingTooltipOnSpots.remove(spotIndex);
+                      } else {
+                        showingTooltipOnSpots.add(spotIndex);
+                      }
+                    });
+                  }
+                },
+                mouseCursorResolver:
+                    (FlTouchEvent event, LineTouchResponse? response) {
+                  if (response == null || response.lineBarSpots == null) {
+                    return SystemMouseCursors.basic;
+                  }
+                  return SystemMouseCursors.click;
+                },
+                getTouchedSpotIndicator:
+                    (LineChartBarData barData, List<int> spotIndexes) {
+                  return spotIndexes.map((index) {
+                    return TouchedSpotIndicatorData(
+                      const FlLine(
+                        color: Colors.pink,
+                      ),
+                      FlDotData(
+                        show: true,
+                        getDotPainter: (spot, percent, barData, index) =>
+                            FlDotCirclePainter(
+                          radius: 8,
+                          color:Colors.red,
+                          strokeWidth: 2,
+                          strokeColor:TColor.secondaryColor1,
+                        ),
+                      ),
+                    );
+                  }).toList();
+                },
+                touchTooltipData: LineTouchTooltipData(
+                  getTooltipColor: (touchedSpot) => Colors.pink,
+                  tooltipBorderRadius: BorderRadius.circular(8),
+                  getTooltipItems: (List<LineBarSpot> lineBarsSpot) {
+                    return lineBarsSpot.map((lineBarSpot) {
+                      return LineTooltipItem(
+                        lineBarSpot.y.toString(),
+                        const TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      );
+                    }).toList();
+                  },
+                ),
+              ),
+              lineBarsData: lineBarsData,
+              minY: 0,
+              titlesData: FlTitlesData(
+                show: false,
+                
+              ),
+              gridData: const FlGridData(show: false),
+              borderData: FlBorderData(
+                show: true,
+                border: Border.all(
+                  color: Colors.transparent ,
+                ),
+              ),
+            ),
+        )
                     ],
                   ),
                 ),
