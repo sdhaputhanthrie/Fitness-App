@@ -57,7 +57,7 @@ class _HomeViewState extends State<HomeView> {
         spots: allSpots,
         isCurved: true,
         barWidth: 4,
-        shadow: const Shadow(blurRadius: 8),
+
         belowBarData: BarAreaData(
           show: true,
           gradient: LinearGradient(
@@ -76,7 +76,7 @@ class _HomeViewState extends State<HomeView> {
       ),
     ];
 
-    final tooltipsOnBar = lineBarsData[0]; 
+    final tooltipsOnBar = lineBarsData[0];
     return Scaffold(
       backgroundColor: TColor.white,
       body: SingleChildScrollView(
@@ -253,154 +253,167 @@ class _HomeViewState extends State<HomeView> {
                 ),
                 SizedBox(height: media.height * 0.02),
 
-                Container(
-                  height: media.width * 0.4,
-                  width: double.maxFinite,
+                ClipRRect(
+                  borderRadius: BorderRadiusGeometry.circular(25),
+                  child: Container(
+                    height: media.width * 0.4,
+                    width: double.maxFinite,
 
-                  decoration: BoxDecoration(
-                    color: TColor.primaryColor2.withOpacity(0.3),
-                    borderRadius: BorderRadius.circular(25),
-                  ),
+                    decoration: BoxDecoration(
+                      color: TColor.primaryColor2.withOpacity(0.3),
+                      borderRadius: BorderRadius.circular(25),
+                    ),
 
-                  child: Stack(
-                    alignment: Alignment.topLeft,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 25,
-                          vertical: 25,
-                        ),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          mainAxisSize: MainAxisSize.min,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              "Heart Rate",
-                              style: TextStyle(
-                                color: TColor.black,
-                                fontSize: 14,
-                                fontWeight: FontWeight.w700,
-                              ),
-                            ),
-                            ShaderMask(
-                              blendMode: BlendMode.srcIn,
-                              shaderCallback: (bounds) {
-                                return LinearGradient(
-                                  colors: TColor.primaryG,
-                                  begin: Alignment.centerLeft,
-                                  end: Alignment.centerRight,
-                                ).createShader(
-                                  Rect.fromLTRB(
-                                    0,
-                                    0,
-                                    bounds.width,
-                                    bounds.height,
-                                  ),
-                                );
-                              },
-
-                              child: Text(
-                                "78 BPM",
+                    child: Stack(
+                      alignment: Alignment.topLeft,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 25,
+                            vertical: 25,
+                          ),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            mainAxisSize: MainAxisSize.min,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                "Heart Rate",
                                 style: TextStyle(
-                                  color: TColor.white.withOpacity(0.7),
+                                  color: TColor.black,
+                                  fontSize: 14,
                                   fontWeight: FontWeight.w700,
-                                  fontSize: 16,
                                 ),
                               ),
+                              ShaderMask(
+                                blendMode: BlendMode.srcIn,
+                                shaderCallback: (bounds) {
+                                  return LinearGradient(
+                                    colors: TColor.primaryG,
+                                    begin: Alignment.centerLeft,
+                                    end: Alignment.centerRight,
+                                  ).createShader(
+                                    Rect.fromLTRB(
+                                      0,
+                                      0,
+                                      bounds.width,
+                                      bounds.height,
+                                    ),
+                                  );
+                                },
+
+                                child: Text(
+                                  "78 BPM",
+                                  style: TextStyle(
+                                    color: TColor.white.withOpacity(0.7),
+                                    fontWeight: FontWeight.w700,
+                                    fontSize: 16,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        LineChart(
+                          LineChartData(
+                            showingTooltipIndicators: showingTooltipOnSpots.map(
+                              (index) {
+                                return ShowingTooltipIndicators([
+                                  LineBarSpot(
+                                    tooltipsOnBar,
+                                    lineBarsData.indexOf(tooltipsOnBar),
+                                    tooltipsOnBar.spots[index],
+                                  ),
+                                ]);
+                              },
+                            ).toList(),
+                            lineTouchData: LineTouchData(
+                              enabled: true,
+                              handleBuiltInTouches: false,
+                              touchCallback:
+                                  (
+                                    FlTouchEvent event,
+                                    LineTouchResponse? response,
+                                  ) {
+                                    if (response == null ||
+                                        response.lineBarSpots == null) {
+                                      return;
+                                    }
+                                    if (event is FlTapUpEvent) {
+                                      final spotIndex = response
+                                          .lineBarSpots!
+                                          .first
+                                          .spotIndex;
+                                      showingTooltipOnSpots.clear();
+                                      setState(() {});
+                                    }
+                                  },
+                              mouseCursorResolver:
+                                  (
+                                    FlTouchEvent event,
+                                    LineTouchResponse? response,
+                                  ) {
+                                    if (response == null ||
+                                        response.lineBarSpots == null) {
+                                      return SystemMouseCursors.basic;
+                                    }
+                                    return SystemMouseCursors.click;
+                                  },
+                              getTouchedSpotIndicator:
+                                  (
+                                    LineChartBarData barData,
+                                    List<int> spotIndexes,
+                                  ) {
+                                    return spotIndexes.map((index) {
+                                      return TouchedSpotIndicatorData(
+                                        const FlLine(color: Colors.transparent),
+                                        FlDotData(
+                                          show: true,
+                                          getDotPainter:
+                                              (spot, percent, barData, index) =>
+                                                  FlDotCirclePainter(
+                                                    radius: 3,
+                                                    color: Colors.white,
+                                                    strokeWidth: 3,
+                                                    strokeColor:
+                                                        TColor.secondaryColor1,
+                                                  ),
+                                        ),
+                                      );
+                                    }).toList();
+                                  },
+                              touchTooltipData: LineTouchTooltipData(
+                                getTooltipColor: (touchedSpot) =>
+                                    TColor.secondaryColor1,
+                                tooltipBorderRadius: BorderRadius.circular(8),
+                                getTooltipItems:
+                                    (List<LineBarSpot> lineBarsSpot) {
+                                      return lineBarsSpot.map((lineBarSpot) {
+                                        return LineTooltipItem(
+                                          "${lineBarSpot.x.toInt()}mins ago",
+                                          const TextStyle(
+                                            color: Colors.white,
+                                            fontSize: 10,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        );
+                                      }).toList();
+                                    },
+                              ),
                             ),
-                          ],
+                            lineBarsData: lineBarsData,
+                            minY: 0,
+                            maxY: 130,
+                            titlesData: FlTitlesData(show: false),
+                            gridData: const FlGridData(show: false),
+                            borderData: FlBorderData(
+                              show: true,
+                              border: Border.all(color: Colors.transparent),
+                            ),
+                          ),
                         ),
-                      ),
-                      LineChart(
-            LineChartData(
-              showingTooltipIndicators: showingTooltipOnSpots.map((index) {
-                return ShowingTooltipIndicators([
-                  LineBarSpot(
-                    tooltipsOnBar,
-                    lineBarsData.indexOf(tooltipsOnBar),
-                    tooltipsOnBar.spots[index],
-                  ),
-                ]);
-              }).toList(),
-              lineTouchData: LineTouchData(
-                enabled: true,
-                handleBuiltInTouches: false,
-                touchCallback:
-                    (FlTouchEvent event, LineTouchResponse? response) {
-                  if (response == null || response.lineBarSpots == null) {
-                    return;
-                  }
-                  if (event is FlTapUpEvent) {
-                    final spotIndex = response.lineBarSpots!.first.spotIndex;
-                    setState(() {
-                      if (showingTooltipOnSpots.contains(spotIndex)) {
-                        showingTooltipOnSpots.remove(spotIndex);
-                      } else {
-                        showingTooltipOnSpots.add(spotIndex);
-                      }
-                    });
-                  }
-                },
-                mouseCursorResolver:
-                    (FlTouchEvent event, LineTouchResponse? response) {
-                  if (response == null || response.lineBarSpots == null) {
-                    return SystemMouseCursors.basic;
-                  }
-                  return SystemMouseCursors.click;
-                },
-                getTouchedSpotIndicator:
-                    (LineChartBarData barData, List<int> spotIndexes) {
-                  return spotIndexes.map((index) {
-                    return TouchedSpotIndicatorData(
-                      const FlLine(
-                        color: Colors.pink,
-                      ),
-                      FlDotData(
-                        show: true,
-                        getDotPainter: (spot, percent, barData, index) =>
-                            FlDotCirclePainter(
-                          radius: 8,
-                          color:Colors.red,
-                          strokeWidth: 2,
-                          strokeColor:TColor.secondaryColor1,
-                        ),
-                      ),
-                    );
-                  }).toList();
-                },
-                touchTooltipData: LineTouchTooltipData(
-                  getTooltipColor: (touchedSpot) => Colors.pink,
-                  tooltipBorderRadius: BorderRadius.circular(8),
-                  getTooltipItems: (List<LineBarSpot> lineBarsSpot) {
-                    return lineBarsSpot.map((lineBarSpot) {
-                      return LineTooltipItem(
-                        lineBarSpot.y.toString(),
-                        const TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      );
-                    }).toList();
-                  },
-                ),
-              ),
-              lineBarsData: lineBarsData,
-              minY: 0,
-              titlesData: FlTitlesData(
-                show: false,
-                
-              ),
-              gridData: const FlGridData(show: false),
-              borderData: FlBorderData(
-                show: true,
-                border: Border.all(
-                  color: Colors.transparent ,
-                ),
-              ),
-            ),
-        )
-                    ],
+                      ],
+                    ),
                   ),
                 ),
               ],
