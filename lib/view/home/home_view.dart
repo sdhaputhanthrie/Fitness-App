@@ -11,9 +11,50 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> {
+
+   List<int> showingTooltipOnSpots = [21];
+
+  List<FlSpot> get allSpots => const [
+        FlSpot(0, 20),
+        FlSpot(1, 25),
+        FlSpot(2, 40),
+        FlSpot(3, 50),
+        FlSpot(4, 35),
+        FlSpot(5, 40),
+        FlSpot(6, 30),
+        FlSpot(7, 20),
+        FlSpot(8, 25),
+        FlSpot(9, 40),
+        FlSpot(10, 50),
+        FlSpot(11, 35),
+        FlSpot(12, 50),
+        FlSpot(13, 60),
+        FlSpot(14, 40),
+        FlSpot(15, 50),
+        FlSpot(16, 20),
+        FlSpot(17, 25),
+        FlSpot(18, 40),
+        FlSpot(19, 50),
+        FlSpot(20, 35),
+        FlSpot(21, 80),
+        FlSpot(22, 30),
+        FlSpot(23, 20),
+        FlSpot(24, 25),
+        FlSpot(25, 40),
+        FlSpot(26, 50),
+        FlSpot(27, 35),
+        FlSpot(28, 50),
+        FlSpot(29, 60),
+        FlSpot(30, 40),
+        
+
+      ];
+
   @override
   Widget build(BuildContext context) {
     var media = MediaQuery.of(context).size;
+
+    
     return Scaffold(
       backgroundColor: TColor.white,
       body: SingleChildScrollView(
@@ -195,14 +236,17 @@ class _HomeViewState extends State<HomeView> {
                        
 
                         Container(
+                          height: media.width*0.4 ,
+                          width: double.maxFinite,
+                          
                
                 
-                decoration: BoxDecoration(color: TColor.primaryColor2.withOpacity(0.3), borderRadius: BorderRadius.circular(15),),
+                decoration: BoxDecoration(color: TColor.primaryColor2.withOpacity(0.3), borderRadius: BorderRadius.circular(25),),
 
                 child:Stack(
                   alignment:Alignment.topLeft ,
                   children: [
-                    Padding(padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
+                    Padding(padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 25),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.start,
                       mainAxisSize: MainAxisSize.min,
@@ -216,13 +260,27 @@ class _HomeViewState extends State<HomeView> {
                                     fontWeight: FontWeight.w700,
                                   ),
                                 ),
-                                Text(
-                                  "78 BPM",
-                                  style: TextStyle(
-                                    color: TColor.white.withOpacity(0.7),
-                                    fontSize: 12,
-                                  ),
+                                ShaderMask(
+          blendMode: BlendMode.srcIn, 
+          shaderCallback: (bounds) {
+            return LinearGradient(
+              colors: TColor.primaryG,
+             begin: Alignment.centerLeft,
+             end: Alignment.centerRight)
+            .createShader(
+              Rect.fromLTRB(0, 0, bounds.width, bounds.height));
+          },
+       
+        child:Text(
+                      "78 BPM",
+                       style: TextStyle(
+                          color: TColor.white.withOpacity(0.7),
+                          fontWeight:FontWeight.w700 ,
+                          fontSize: 16,
+                             ),
+                          ),
                                 ),
+                                
                       ],
                     )
                     )
