@@ -55,23 +55,25 @@ class _HomeViewState extends State<HomeView> {
       LineChartBarData(
         showingIndicators: showingTooltipOnSpots,
         spots: allSpots,
-        isCurved: true,
-        barWidth: 4,
+        isCurved: false,
+        barWidth: 3,
 
         belowBarData: BarAreaData(
           show: true,
           gradient: LinearGradient(
             colors: [
-              TColor.primaryColor2.withOpacity(0.4),
+              TColor.primaryColor2.withOpacity(0.7),
               TColor.primaryColor1.withOpacity(0.1),
-              TColor.primaryColor1.withOpacity(0.1),
+             
             ],
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter
           ),
         ),
-        dotData: const FlDotData(show: false),
+        dotData: FlDotData(show: false),
         gradient: LinearGradient(
           colors: TColor.primaryG,
-          stops: const [0.1, 0.4, 0.9],
+          
         ),
       ),
     ];
@@ -345,7 +347,10 @@ class _HomeViewState extends State<HomeView> {
                                           .first
                                           .spotIndex;
                                       showingTooltipOnSpots.clear();
-                                      setState(() {});
+
+                                      setState(() {
+                                        showingTooltipOnSpots.add(spotIndex);
+                                      });
                                     }
                                   },
                               mouseCursorResolver:
@@ -366,13 +371,13 @@ class _HomeViewState extends State<HomeView> {
                                   ) {
                                     return spotIndexes.map((index) {
                                       return TouchedSpotIndicatorData(
-                                        const FlLine(color: Colors.transparent),
+                                        FlLine(color: Colors.transparent),
                                         FlDotData(
                                           show: true,
                                           getDotPainter:
                                               (spot, percent, barData, index) =>
                                                   FlDotCirclePainter(
-                                                    radius: 3,
+                                                    radius: 4,
                                                     color: Colors.white,
                                                     strokeWidth: 3,
                                                     strokeColor:
@@ -385,12 +390,12 @@ class _HomeViewState extends State<HomeView> {
                               touchTooltipData: LineTouchTooltipData(
                                 getTooltipColor: (touchedSpot) =>
                                     TColor.secondaryColor1,
-                                tooltipBorderRadius: BorderRadius.circular(8),
+                                tooltipBorderRadius: BorderRadius.circular(20),
                                 getTooltipItems:
                                     (List<LineBarSpot> lineBarsSpot) {
                                       return lineBarsSpot.map((lineBarSpot) {
                                         return LineTooltipItem(
-                                          "${lineBarSpot.x.toInt()}mins ago",
+                                          "${lineBarSpot.x.toInt()} mins ago",
                                           const TextStyle(
                                             color: Colors.white,
                                             fontSize: 10,
@@ -405,6 +410,7 @@ class _HomeViewState extends State<HomeView> {
                             minY: 0,
                             maxY: 130,
                             titlesData: FlTitlesData(show: false),
+
                             gridData: const FlGridData(show: false),
                             borderData: FlBorderData(
                               show: true,
