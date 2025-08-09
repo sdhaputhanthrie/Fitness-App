@@ -33,14 +33,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.4.0"
-  circular_progress_bar:
-    dependency: "direct main"
-    description:
-      name: circular_progress_bar
-      sha256: b3b9060743383da09309a73ef862aaa2c1c80d61d2f0eb0ba3332f45ee0bd994
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.0.4"
   clock:
     dependency: transitive
     description:
@@ -112,6 +104,11 @@ packages:
     version: "5.0.0"
   flutter_test:
     dependency: "direct dev"
+    description: flutter
+    source: sdk
+    version: "0.0.0"
+  flutter_web_plugins:
+    dependency: transitive
     description: flutter
     source: sdk
     version: "0.0.0"
@@ -195,6 +192,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.9.2"
+  simple_circular_progress_bar:
+    dependency: "direct main"
+    description:
+      name: simple_circular_progress_bar
+      sha256: e661ca942fbc617298e975b41fde19003d995de73ca6c2a1526c54d52f07151b
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.2"
   sky_engine:
     dependency: transitive
     description: flutter
