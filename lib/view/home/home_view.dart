@@ -256,6 +256,8 @@ class _HomeViewState extends State<HomeView> {
                 SizedBox(height: media.height * 0.02),
 
                 ClipRRect(
+
+
                   borderRadius: BorderRadiusGeometry.circular(25),
                   child: Container(
                     height: media.width * 0.4,
@@ -271,8 +273,8 @@ class _HomeViewState extends State<HomeView> {
                       children: [
                         Padding(
                           padding: const EdgeInsets.symmetric(
-                            horizontal: 25,
-                            vertical: 25,
+                            horizontal: 20,
+                            vertical: 20,
                           ),
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.start,
@@ -422,12 +424,43 @@ class _HomeViewState extends State<HomeView> {
                     ),
                   ),
                 ),
+                
+                SizedBox(height: media.height * 0.02),
+
+                  Row(children: [
+
+                    Expanded(
+                      child: Container(
+                        height: media.width,
+                        decoration: BoxDecoration(color: Colors.white,borderRadius: BorderRadius.circular(25),boxShadow: const[BoxShadow(color: Colors.black12,blurRadius: 2)]),
+                      ),
+                    ),
+                  
+
+
+                   Expanded(
+                      child: Column(children: [
+                        Container(
+                          height: media.width,
+                          decoration: BoxDecoration(color:Colors.white,borderRadius: BorderRadius.circular(25), boxShadow:[BoxShadow (color: Colors.black12,blurRadius: 2)]),
+                          
+                        )
+                      ],)
+                    )
+                 
+
+
+                
+
               ],
             ),
+              ]
           ),
         ),
       ),
+      )
     );
+    
   }
 
   List<PieChartSectionData> showingSections() {
