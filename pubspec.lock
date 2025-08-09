@@ -33,6 +33,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.4.0"
+  circular_progress_bar:
+    dependency: "direct main"
+    description:
+      name: circular_progress_bar
+      sha256: b3b9060743383da09309a73ef862aaa2c1c80d61d2f0eb0ba3332f45ee0bd994
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.0.4"
   clock:
     dependency: transitive
     description:
@@ -57,6 +65,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.8"
+  dotted_dashed_line:
+    dependency: "direct main"
+    description:
+      name: dotted_dashed_line
+      sha256: da3678819f4522c982eb256d2bc80d032fd2a3e7b437841ea83987c67c00cda5
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.0.3"
   equatable:
     dependency: transitive
     description:
@@ -163,6 +179,22 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.9.1"
+  plugin_platform_interface:
+    dependency: transitive
+    description:
+      name: plugin_platform_interface
+      sha256: "4820fbfdb9478b1ebae27888254d445073732dae3d6ea81f0b7e06d5dedc3f02"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.1.8"
+  simple_animation_progress_bar:
+    dependency: "direct main"
+    description:
+      name: simple_animation_progress_bar
+      sha256: "57d4a6f838020deb1ae69600be9365cd3d85e7416dc0a5e66b490581e4fddcd8"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.9.2"
   sky_engine:
     dependency: transitive
     description: flutter
