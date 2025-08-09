@@ -437,16 +437,27 @@ class _HomeViewState extends State<HomeView> {
                     ),
                   
 
-
+                  SizedBox(height: media.width * 0.02),
                    Expanded(
-                      child: Column(children: [
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start ,
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
                         Container(
-                          height: media.width,
+                          height: media.width * 0.45,
+                          decoration: BoxDecoration(color:Colors.white,borderRadius: BorderRadius.circular(25), boxShadow:[BoxShadow (color: Colors.black12,blurRadius: 2)]),
+                          
+                        ),
+                      
+                    
+                    Container(
+                          height: media.width * 0.45,
                           decoration: BoxDecoration(color:Colors.white,borderRadius: BorderRadius.circular(25), boxShadow:[BoxShadow (color: Colors.black12,blurRadius: 2)]),
                           
                         )
                       ],)
-                    )
+            )
+            
                  
 
 
