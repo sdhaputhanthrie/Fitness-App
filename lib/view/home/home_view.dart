@@ -1,3 +1,4 @@
+import 'package:dotted_dashed_line/dotted_dashed_line.dart';
 import 'package:fitness/common/colo_extension.dart';
 import 'package:fitness/common_widget/round_button.dart';
 import 'package:fl_chart/fl_chart.dart';
@@ -521,8 +522,11 @@ class _HomeViewState extends State<HomeView> {
                                           mainAxisAlignment: MainAxisAlignment.start,
                                           crossAxisAlignment: CrossAxisAlignment.start,
                                           children: [
-                                            Container(width: 10, height: 10, decoration: BoxDecoration(color: TColor.secondaryColor2, borderRadius: BorderRadius.circular(5)),)
+                                            Container(width: 10, height: 10, decoration: BoxDecoration(color: TColor.secondaryColor2, borderRadius: BorderRadius.circular(5)),),
+                                            const DottedDashedLine(height: 40, width: 0, axis: Axis.vertical)
                                           ]),
+
+                                           const SizedBox(width: 10),
 
                                         Column(
                                           mainAxisAlignment: MainAxisAlignment.start,
