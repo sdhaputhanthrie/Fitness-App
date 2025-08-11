@@ -4,6 +4,7 @@ import 'package:fitness/common_widget/round_button.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:simple_animation_progress_bar/simple_animation_progress_bar.dart';
+import 'package:simple_circular_progress_bar/simple_circular_progress_bar.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -724,6 +725,22 @@ class _HomeViewState extends State<HomeView> {
                                         fontWeight: FontWeight.w700,
                                         fontSize: 16,
                                       ),
+                                    ),
+
+                                  ),
+                                  const Spacer(),
+                                  Container(
+                                    
+                                    alignment: Alignment.center,
+                                    child: SizedBox(
+                                      width: media.width * 0.2,
+                                      height: media.width * 0.2,
+                                      child: SimpleCircularProgressBar(
+                                        progressStrokeWidth: 10,
+                                        backStrokeWidth: 10,
+                                        
+                                       startAngle: -180,
+                                          ),
                                     ),
                                   ),
                                 
