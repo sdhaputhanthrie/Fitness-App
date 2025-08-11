@@ -2,6 +2,7 @@ import 'package:fitness/common/colo_extension.dart';
 import 'package:fitness/common_widget/round_button.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
+import 'package:simple_animation_progress_bar/simple_animation_progress_bar.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -46,6 +47,13 @@ class _HomeViewState extends State<HomeView> {
     FlSpot(29, 60),
     FlSpot(30, 40),
   ];
+  List WaterArr = [
+    {"title": "6am - 8am", "subtitle": "600ml"},
+    {"title": "9am - 11am", "subtitle": "500ml"},
+    {"title": "11am - 2pm", "subtitle": "1000ml"},
+    {"title": "2pm - 4pm", "subtitle": "700ml"},
+    {"title": "4pm - now", "subtitle": "900ml"},
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -64,17 +72,13 @@ class _HomeViewState extends State<HomeView> {
             colors: [
               TColor.primaryColor2.withOpacity(0.7),
               TColor.primaryColor1.withOpacity(0.1),
-             
             ],
             begin: Alignment.topCenter,
-            end: Alignment.bottomCenter
+            end: Alignment.bottomCenter,
           ),
         ),
         dotData: FlDotData(show: false),
-        gradient: LinearGradient(
-          colors: TColor.primaryG,
-          
-        ),
+        gradient: LinearGradient(colors: TColor.primaryG),
       ),
     ];
 
@@ -256,8 +260,6 @@ class _HomeViewState extends State<HomeView> {
                 SizedBox(height: media.height * 0.02),
 
                 ClipRRect(
-
-
                   borderRadius: BorderRadiusGeometry.circular(25),
                   child: Container(
                     height: media.width * 0.4,
@@ -424,54 +426,144 @@ class _HomeViewState extends State<HomeView> {
                     ),
                   ),
                 ),
-                
+
                 SizedBox(height: media.height * 0.02),
 
-                  Row(children: [
-
+                Row(
+                  children: [
                     Expanded(
                       child: Container(
-                        height: media.width,
-                        decoration: BoxDecoration(color: Colors.white,borderRadius: BorderRadius.circular(25),boxShadow: const[BoxShadow(color: Colors.black12,blurRadius: 2)]),
+                        height: media.width * 0.95,
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 20,
+                          vertical: 25,
+                        ),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(25),
+                          boxShadow: const [
+                            BoxShadow(color: Colors.black12, blurRadius: 2),
+                          ],
+                        ),
+                        child: Row(
+                          children: [
+                            SimpleAnimationProgressBar(
+                              height: media.width * 0.85,
+                              width: media.width * 0.07,
+                              backgroundColor: Colors.grey.shade100,
+                              foregroundColor: Colors.purple,
+                              ratio: 0.5,
+                              direction: Axis.vertical,
+                              curve: Curves.fastLinearToSlowEaseIn,
+                              duration: const Duration(seconds: 3),
+                              borderRadius: BorderRadius.circular(15),
+                              gradientColor: LinearGradient(
+                                colors: TColor.primaryG,
+                                begin: Alignment.bottomCenter,
+                                end: Alignment.topCenter,
+                              ),
+                            ),
+                            const SizedBox(width: 10),
+                            Expanded(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    "Water Intake",
+                                    style: TextStyle(
+                                      color: TColor.black,
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w700,
+                                    ),
+                                  ),
+                                  ShaderMask(
+                                    blendMode: BlendMode.srcIn,
+                                    shaderCallback: (bounds) {
+                                      return LinearGradient(
+                                        colors: TColor.primaryG,
+                                        begin: Alignment.centerLeft,
+                                        end: Alignment.centerRight,
+                                      ).createShader(
+                                        Rect.fromLTRB(
+                                          0,
+                                          0,
+                                          bounds.width,
+                                          bounds.height,
+                                        ),
+                                      );
+                                    },
+
+                                    child: Text(
+                                      "4 Liters",
+                                      style: TextStyle(
+                                        color: TColor.white.withOpacity(0.7),
+                                        fontWeight: FontWeight.w700,
+                                        fontSize: 16,
+                                      ),
+                                    ),
+                                  ),
+                                  const SizedBox(height: 10),
+
+                                  Text(
+                                    "Real Time Updates",
+                                    style: TextStyle(
+                                      color: TColor.gray,
+                                      fontSize: 12,
+                                    ),
+                                  ),
+                                  Column(
+                                    children: WaterArr.map((wObj) {
+                                      return Row(children: []);
+                                    }).toList(),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
-                  
 
-                  SizedBox(height: media.width * 0.02),
-                   Expanded(
+                    SizedBox(width: media.width * 0.02),
+                    Expanded(
                       child: Column(
-                        mainAxisAlignment: MainAxisAlignment.start ,
+                        mainAxisAlignment: MainAxisAlignment.start,
                         mainAxisSize: MainAxisSize.min,
                         children: [
-                        Container(
-                          height: media.width * 0.45,
-                          decoration: BoxDecoration(color:Colors.white,borderRadius: BorderRadius.circular(25), boxShadow:[BoxShadow (color: Colors.black12,blurRadius: 2)]),
-                          
-                        ),
-                      
-                    
-                    Container(
-                          height: media.width * 0.45,
-                          decoration: BoxDecoration(color:Colors.white,borderRadius: BorderRadius.circular(25), boxShadow:[BoxShadow (color: Colors.black12,blurRadius: 2)]),
-                          
-                        )
-                      ],)
-            )
-            
-                 
+                          Container(
+                            height: media.width * 0.45,
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(25),
+                              boxShadow: [
+                                BoxShadow(color: Colors.black12, blurRadius: 2),
+                              ],
+                            ),
+                          ),
 
-
-                
-
+                          SizedBox(height: media.width * 0.02),
+                          Container(
+                            height: media.width * 0.45,
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(25),
+                              boxShadow: [
+                                BoxShadow(color: Colors.black12, blurRadius: 2),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(height: media.height * 0.1),
               ],
             ),
-              ]
           ),
         ),
       ),
-      )
     );
-    
   }
 
   List<PieChartSectionData> showingSections() {
