@@ -512,8 +512,59 @@ class _HomeViewState extends State<HomeView> {
                                     ),
                                   ),
                                   Column(
+                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: WaterArr.map((wObj) {
-                                      return Row(children: []);
+                                      return Row(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: [
+                                            Column(
+                                          mainAxisAlignment: MainAxisAlignment.start,
+                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          children: [
+                                            Container(width: 10, height: 10, decoration: BoxDecoration(color: TColor.secondaryColor2, borderRadius: BorderRadius.circular(5)),)
+                                          ]),
+
+                                        Column(
+                                          mainAxisAlignment: MainAxisAlignment.start,
+                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          children: [
+                                          
+                                  Text(
+                                    wObj["title"].toString(),
+                                    style: TextStyle(
+                                      color: TColor.gray,
+                                      fontSize: 12,
+                                    ),
+                                    ),
+                                     ShaderMask(
+                                    blendMode: BlendMode.srcIn,
+                                    shaderCallback: (bounds) {
+                                      return LinearGradient(
+                                        colors: TColor.secondaryG,
+                                        begin: Alignment.centerLeft,
+                                        end: Alignment.centerRight,
+                                      ).createShader(
+                                        Rect.fromLTRB(
+                                          0,
+                                          0,
+                                          bounds.width,
+                                          bounds.height,
+                                        ),
+                                      );
+                                    },
+
+                                    child: Text(
+                                      wObj["subtitle"].toString(),
+                                      style: TextStyle(
+                                        color: TColor.white.withOpacity(0.7),
+                                        fontWeight: FontWeight.w700,
+                                        fontSize: 16,
+                                      ),
+                                    ),
+                                  ),
+                                    
+                                        ],)
+                                      ]);
                                     }).toList(),
                                   ),
                                 ],
