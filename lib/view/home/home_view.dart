@@ -513,62 +513,86 @@ class _HomeViewState extends State<HomeView> {
                                     ),
                                   ),
                                   Column(
-                                     crossAxisAlignment: CrossAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: WaterArr.map((wObj) {
+                                      var isLast = wObj == WaterArr.last;
                                       return Row(
-                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
                                         children: [
-                                            Column(
-                                          mainAxisAlignment: MainAxisAlignment.start,
-                                          crossAxisAlignment: CrossAxisAlignment.start,
-                                          children: [
-                                            Container(width: 10, height: 10, decoration: BoxDecoration(color: TColor.secondaryColor2, borderRadius: BorderRadius.circular(5)),),
-                                            const DottedDashedLine(height: 40, width: 0, axis: Axis.vertical)
-                                          ]),
+                                          Column(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.start,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.center,
+                                            children: [
+                                              Container(
+                                                margin: const EdgeInsets.symmetric(vertical: 8.0),
+                                                
+                                                width: 10,
+                                                height: 10,
+                                                decoration: BoxDecoration(
+                                                  color: TColor.secondaryColor2,
+                                                  borderRadius:
+                                                      BorderRadius.circular(5),
+                                                ),
+                                              ),
+                                              if(!isLast)
+                                               DottedDashedLine(
+                                                height: media.width * 0.06,
+                                                width: 0,
+                                                axis: Axis.vertical,
+                                              ),
+                                            ],
+                                          ),
 
-                                           const SizedBox(width: 10),
+                                          const SizedBox(width: 10),
 
-                                        Column(
-                                          mainAxisAlignment: MainAxisAlignment.start,
-                                          crossAxisAlignment: CrossAxisAlignment.start,
-                                          children: [
-                                          
-                                  Text(
-                                    wObj["title"].toString(),
-                                    style: TextStyle(
-                                      color: TColor.gray,
-                                      fontSize: 12,
-                                    ),
-                                    ),
-                                     ShaderMask(
-                                    blendMode: BlendMode.srcIn,
-                                    shaderCallback: (bounds) {
-                                      return LinearGradient(
-                                        colors: TColor.secondaryG,
-                                        begin: Alignment.centerLeft,
-                                        end: Alignment.centerRight,
-                                      ).createShader(
-                                        Rect.fromLTRB(
-                                          0,
-                                          0,
-                                          bounds.width,
-                                          bounds.height,
-                                        ),
+                                          Column(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.start,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                wObj["title"].toString(),
+                                                style: TextStyle(
+                                                  color: TColor.gray,
+                                                  fontSize: 12,
+                                                ),
+                                              ),
+                                              ShaderMask(
+                                                blendMode: BlendMode.srcIn,
+                                                shaderCallback: (bounds) {
+                                                  return LinearGradient(
+                                                    colors: TColor.secondaryG,
+                                                    begin: Alignment.centerLeft,
+                                                    end: Alignment.centerRight,
+                                                  ).createShader(
+                                                    Rect.fromLTRB(
+                                                      0,
+                                                      0,
+                                                      bounds.width,
+                                                      bounds.height,
+                                                    ),
+                                                  );
+                                                },
+
+                                                child: Text(
+                                                  wObj["subtitle"].toString(),
+                                                  style: TextStyle(
+                                                    color: TColor.white
+                                                        .withOpacity(0.7),
+                                                    fontWeight: FontWeight.w700,
+                                                    fontSize: 16,
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ],
                                       );
-                                    },
-
-                                    child: Text(
-                                      wObj["subtitle"].toString(),
-                                      style: TextStyle(
-                                        color: TColor.white.withOpacity(0.7),
-                                        fontWeight: FontWeight.w700,
-                                        fontSize: 16,
-                                      ),
-                                    ),
-                                  ),
-                                    
-                                        ],)
-                                      ]);
                                     }).toList(),
                                   ),
                                 ],
