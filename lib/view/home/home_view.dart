@@ -533,7 +533,7 @@ class _HomeViewState extends State<HomeView> {
                                                 width: 10,
                                                 height: 10,
                                                 decoration: BoxDecoration(
-                                                  color: TColor.secondaryColor2,
+                                                  color: TColor.secondaryColor1.withOpacity(0.5),
                                                   borderRadius:
                                                       BorderRadius.circular(5),
                                                 ),
@@ -542,6 +542,7 @@ class _HomeViewState extends State<HomeView> {
                                                DottedDashedLine(
                                                 height: media.width * 0.06,
                                                 width: 0,
+                                                dashColor: TColor.secondaryColor1.withOpacity(0.5),
                                                 axis: Axis.vertical,
                                               ),
                                             ],
@@ -559,7 +560,7 @@ class _HomeViewState extends State<HomeView> {
                                                 wObj["title"].toString(),
                                                 style: TextStyle(
                                                   color: TColor.gray,
-                                                  fontSize: 12,
+                                                  fontSize: 10,
                                                 ),
                                               ),
                                               ShaderMask(
@@ -584,8 +585,8 @@ class _HomeViewState extends State<HomeView> {
                                                   style: TextStyle(
                                                     color: TColor.white
                                                         .withOpacity(0.7),
-                                                    fontWeight: FontWeight.w700,
-                                                    fontSize: 16,
+                                                    
+                                                    fontSize: 12,
                                                   ),
                                                 ),
                                               ),
