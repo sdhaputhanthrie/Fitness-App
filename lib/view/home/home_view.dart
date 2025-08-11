@@ -528,23 +528,29 @@ class _HomeViewState extends State<HomeView> {
                                                 CrossAxisAlignment.center,
                                             children: [
                                               Container(
-                                                margin: const EdgeInsets.symmetric(vertical: 8.0),
-                                                
+                                                margin:
+                                                    const EdgeInsets.symmetric(
+                                                      vertical: 8.0,
+                                                    ),
+
                                                 width: 10,
                                                 height: 10,
                                                 decoration: BoxDecoration(
-                                                  color: TColor.secondaryColor1.withOpacity(0.5),
+                                                  color: TColor.secondaryColor1
+                                                      .withOpacity(0.5),
                                                   borderRadius:
                                                       BorderRadius.circular(5),
                                                 ),
                                               ),
-                                              if(!isLast)
-                                               DottedDashedLine(
-                                                height: media.width * 0.06,
-                                                width: 0,
-                                                dashColor: TColor.secondaryColor1.withOpacity(0.5),
-                                                axis: Axis.vertical,
-                                              ),
+                                              if (!isLast)
+                                                DottedDashedLine(
+                                                  height: media.width * 0.06,
+                                                  width: 0,
+                                                  dashColor: TColor
+                                                      .secondaryColor1
+                                                      .withOpacity(0.5),
+                                                  axis: Axis.vertical,
+                                                ),
                                             ],
                                           ),
 
@@ -585,7 +591,7 @@ class _HomeViewState extends State<HomeView> {
                                                   style: TextStyle(
                                                     color: TColor.white
                                                         .withOpacity(0.7),
-                                                    
+
                                                     fontSize: 12,
                                                   ),
                                                 ),
@@ -611,7 +617,11 @@ class _HomeViewState extends State<HomeView> {
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           Container(
+                            width: double.maxFinite,
                             height: media.width * 0.45,
+                            padding: const EdgeInsets.symmetric(
+                              vertical: 25, horizontal: 20),
+                            
                             decoration: BoxDecoration(
                               color: Colors.white,
                               borderRadius: BorderRadius.circular(25),
@@ -619,16 +629,102 @@ class _HomeViewState extends State<HomeView> {
                                 BoxShadow(color: Colors.black12, blurRadius: 2),
                               ],
                             ),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                             
+                                 children: [
+                                  Text(
+                                    "Sleep",
+                                    style: TextStyle(
+                                      color: TColor.black,
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w700,
+                                    ),
+                                  ),
+                                  ShaderMask(
+                                    blendMode: BlendMode.srcIn,
+                                    shaderCallback: (bounds) {
+                                      return LinearGradient(
+                                        colors: TColor.primaryG,
+                                        begin: Alignment.centerLeft,
+                                        end: Alignment.centerRight,
+                                      ).createShader(
+                                        Rect.fromLTRB(
+                                          0,
+                                          0,
+                                          bounds.width,
+                                          bounds.height,
+                                        ),
+                                      );
+                                    },
+
+                                    child: Text(
+                                      "8h 20m",
+                                      style: TextStyle(
+                                        color: TColor.white.withOpacity(0.7),
+                                        fontWeight: FontWeight.w700,
+                                        fontSize: 16,
+                                      ),
+                                    ),
+                                  ),
+                                
+                              ],
+                            ),
                           ),
 
                           SizedBox(height: media.width * 0.02),
-                          Container(
+                           Container(
+                            width: double.maxFinite,
                             height: media.width * 0.45,
+                            padding: const EdgeInsets.symmetric(
+                              vertical: 25, horizontal: 20),
+                            
                             decoration: BoxDecoration(
                               color: Colors.white,
                               borderRadius: BorderRadius.circular(25),
                               boxShadow: [
                                 BoxShadow(color: Colors.black12, blurRadius: 2),
+                              ],
+                            ),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                             
+                                 children: [
+                                  Text(
+                                    "Sleep",
+                                    style: TextStyle(
+                                      color: TColor.black,
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w700,
+                                    ),
+                                  ),
+                                  ShaderMask(
+                                    blendMode: BlendMode.srcIn,
+                                    shaderCallback: (bounds) {
+                                      return LinearGradient(
+                                        colors: TColor.primaryG,
+                                        begin: Alignment.centerLeft,
+                                        end: Alignment.centerRight,
+                                      ).createShader(
+                                        Rect.fromLTRB(
+                                          0,
+                                          0,
+                                          bounds.width,
+                                          bounds.height,
+                                        ),
+                                      );
+                                    },
+
+                                    child: Text(
+                                      "8h 20m",
+                                      style: TextStyle(
+                                        color: TColor.white.withOpacity(0.7),
+                                        fontWeight: FontWeight.w700,
+                                        fontSize: 16,
+                                      ),
+                                    ),
+                                  ),
+                                
                               ],
                             ),
                           ),
