@@ -667,6 +667,7 @@ class _HomeViewState extends State<HomeView> {
                                       ),
                                     ),
                                   ),
+                                  SizedBox(height: media.width * 0.02,),
                                   Image.asset("assets/img/sleep_graph.png",width: double.maxFinite, fit: BoxFit.fitWidth)
                                 
                               ],
