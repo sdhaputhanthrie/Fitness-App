@@ -667,6 +667,7 @@ class _HomeViewState extends State<HomeView> {
                                       ),
                                     ),
                                   ),
+                                  Image.asset("assets/img/sleep_graph.png",width: double.maxFinite, fit: BoxFit.fitWidth)
                                 
                               ],
                             ),
@@ -691,7 +692,7 @@ class _HomeViewState extends State<HomeView> {
                              
                                  children: [
                                   Text(
-                                    "Sleep",
+                                    "Calories",
                                     style: TextStyle(
                                       color: TColor.black,
                                       fontSize: 14,
@@ -716,7 +717,7 @@ class _HomeViewState extends State<HomeView> {
                                     },
 
                                     child: Text(
-                                      "8h 20m",
+                                      "760 kCal",
                                       style: TextStyle(
                                         color: TColor.white.withOpacity(0.7),
                                         fontWeight: FontWeight.w700,
