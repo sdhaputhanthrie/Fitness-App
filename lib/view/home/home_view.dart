@@ -762,13 +762,10 @@ class _HomeViewState extends State<HomeView> {
                                               style: TextStyle(
                                                 color: TColor.white,
                                                 fontSize: 11,
-                                                ),
-                                              
-                                                
                                               ),
+                                            ),
                                           ),
-                                          ),
-                                        
+                                        ),
 
                                         SimpleCircularProgressBar(
                                           progressStrokeWidth: 10,
@@ -791,6 +788,104 @@ class _HomeViewState extends State<HomeView> {
                     ),
                   ],
                 ),
+                SizedBox(height: media.height * 0.1),
+
+                Container(
+                  height: media.width * 0.4,
+                  width: double.maxFinite,
+
+                  child: LineChart(
+                    LineChartData(
+                      showingTooltipIndicators: showingTooltipOnSpots.map((
+                        index,
+                      ) {
+                        return ShowingTooltipIndicators([
+                          LineBarSpot(
+                            tooltipsOnBar,
+                            lineBarsData.indexOf(tooltipsOnBar),
+                            tooltipsOnBar.spots[index],
+                          ),
+                        ]);
+                      }).toList(),
+                      lineTouchData: LineTouchData(
+                        enabled: true,
+                        handleBuiltInTouches: false,
+                        touchCallback:
+                            (FlTouchEvent event, LineTouchResponse? response) {
+                              if (response == null ||
+                                  response.lineBarSpots == null) {
+                                return;
+                              }
+                              if (event is FlTapUpEvent) {
+                                final spotIndex =
+                                    response.lineBarSpots!.first.spotIndex;
+                                showingTooltipOnSpots.clear();
+
+                                setState(() {
+                                  showingTooltipOnSpots.add(spotIndex);
+                                });
+                              }
+                            },
+                        mouseCursorResolver:
+                            (FlTouchEvent event, LineTouchResponse? response) {
+                              if (response == null ||
+                                  response.lineBarSpots == null) {
+                                return SystemMouseCursors.basic;
+                              }
+                              return SystemMouseCursors.click;
+                            },
+                        getTouchedSpotIndicator:
+                            (LineChartBarData barData, List<int> spotIndexes) {
+                              return spotIndexes.map((index) {
+                                return TouchedSpotIndicatorData(
+                                  FlLine(color: Colors.transparent),
+                                  FlDotData(
+                                    show: true,
+                                    getDotPainter:
+                                        (spot, percent, barData, index) =>
+                                            FlDotCirclePainter(
+                                              radius: 4,
+                                              color: Colors.white,
+                                              strokeWidth: 3,
+                                              strokeColor:
+                                                  TColor.secondaryColor1,
+                                            ),
+                                  ),
+                                );
+                              }).toList();
+                            },
+                        touchTooltipData: LineTouchTooltipData(
+                          getTooltipColor: (touchedSpot) =>
+                              TColor.secondaryColor1,
+                          tooltipBorderRadius: BorderRadius.circular(20),
+                          getTooltipItems: (List<LineBarSpot> lineBarsSpot) {
+                            return lineBarsSpot.map((lineBarSpot) {
+                              return LineTooltipItem(
+                                "${lineBarSpot.x.toInt()} mins ago",
+                                const TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 10,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              );
+                            }).toList();
+                          },
+                        ),
+                      ),
+                      lineBarsData: lineBarsData1,
+                      minY: 0,
+                      maxY: 130,
+                      titlesData: FlTitlesData(show: false),
+
+                      gridData: const FlGridData(show: false),
+                      borderData: FlBorderData(
+                        show: true,
+                        border: Border.all(color: Colors.transparent),
+                      ),
+                    ),
+                  ),
+                ),
+
                 SizedBox(height: media.height * 0.1),
               ],
             ),
@@ -835,4 +930,55 @@ class _HomeViewState extends State<HomeView> {
       }
     });
   }
+
+   LineTouchData get lineTouchData1 => LineTouchData(
+        handleBuiltInTouches: true,
+        touchTooltipData: LineTouchTooltipData(
+          getTooltipColor: (touchedSpot) =>
+              Colors.blueGrey.withValues(alpha: 0.8),
+        ),
+      );
+       List<LineChartBarData> get lineBarsData1 => [
+        lineChartBarData1_1,
+        lineChartBarData1_2,
+        
+      ];
+       LineChartBarData get lineChartBarData1_1 => LineChartBarData(
+        isCurved: true,
+        color: Colors.red,
+        barWidth: 8,
+        isStrokeCapRound: true,
+        dotData: const FlDotData(show: false),
+        belowBarData: BarAreaData(show: false),
+        spots: const [
+          FlSpot(1, 1),
+          FlSpot(3, 1.5),
+          FlSpot(5, 1.4),
+          FlSpot(7, 3.4),
+          FlSpot(10, 2),
+          FlSpot(12, 2.2),
+          FlSpot(13, 1.8),
+        ],
+      );
+
+  LineChartBarData get lineChartBarData1_2 => LineChartBarData(
+        isCurved: true,
+        color:Colors.green,
+        barWidth: 8,
+        isStrokeCapRound: true,
+        dotData: const FlDotData(show: false),
+        belowBarData: BarAreaData(
+          show: false,
+          
+        ),
+        spots: const [
+          FlSpot(1, 1),
+          FlSpot(3, 2.8),
+          FlSpot(7, 1.2),
+          FlSpot(10, 2.8),
+          FlSpot(12, 2.6),
+          FlSpot(13, 3.9),
+        ],
+      );
+
 }
