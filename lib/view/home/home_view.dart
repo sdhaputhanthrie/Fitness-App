@@ -877,7 +877,7 @@ class _HomeViewState extends State<HomeView> {
                       maxY: 130,
                       titlesData: FlTitlesData(show: false),
 
-                      gridData: const FlGridData(show: false),
+                      gridData: const FlGridData(show:true),
                       borderData: FlBorderData(
                         show: true,
                         border: Border.all(color: Colors.transparent),
@@ -945,26 +945,30 @@ class _HomeViewState extends State<HomeView> {
       ];
        LineChartBarData get lineChartBarData1_1 => LineChartBarData(
         isCurved: true,
-        color: Colors.red,
-        barWidth: 8,
+        
+        gradient: LinearGradient(colors: [TColor.primaryColor2.withOpacity(0.5),TColor.primaryColor2.withOpacity(0.5)]),
+        barWidth: 4,
         isStrokeCapRound: true,
         dotData: const FlDotData(show: false),
         belowBarData: BarAreaData(show: false),
         spots: const [
-          FlSpot(1, 1),
-          FlSpot(3, 1.5),
-          FlSpot(5, 1.4),
-          FlSpot(7, 3.4),
-          FlSpot(10, 2),
-          FlSpot(12, 2.2),
-          FlSpot(13, 1.8),
+          FlSpot(1, 10),
+          FlSpot(2, 30),
+          FlSpot(3, 50),
+          FlSpot(4, 30),
+          FlSpot(5, 5),
+          FlSpot(6, 40),
+          FlSpot(7, 100),
         ],
       );
 
   LineChartBarData get lineChartBarData1_2 => LineChartBarData(
         isCurved: true,
-        color:Colors.green,
-        barWidth: 8,
+         gradient: LinearGradient(colors: [
+          TColor.secondaryColor2.withOpacity(0.5),
+          TColor.secondaryColor1.withOpacity(0.5),
+          ]),
+        barWidth: 2,
         isStrokeCapRound: true,
         dotData: const FlDotData(show: false),
         belowBarData: BarAreaData(
@@ -972,12 +976,13 @@ class _HomeViewState extends State<HomeView> {
           
         ),
         spots: const [
-          FlSpot(1, 1),
-          FlSpot(3, 2.8),
-          FlSpot(7, 1.2),
-          FlSpot(10, 2.8),
-          FlSpot(12, 2.6),
-          FlSpot(13, 3.9),
+          FlSpot(1, 50),
+          FlSpot(2, 30),
+          FlSpot(3, 10),
+          FlSpot(4, 40),
+          FlSpot(5, 80),
+          FlSpot(6, 60),
+          FlSpot(7, 40),
         ],
       );
 
