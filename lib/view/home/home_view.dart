@@ -788,7 +788,7 @@ class _HomeViewState extends State<HomeView> {
                     ),
                   ],
                 ),
-                SizedBox(height: media.height * 0.1),
+                SizedBox(height: media.height * 0.05),
 
                 Container(
                   height: media.width * 0.4,
@@ -877,7 +877,19 @@ class _HomeViewState extends State<HomeView> {
                       maxY: 130,
                       titlesData: FlTitlesData(show: false),
 
-                      gridData: const FlGridData(show:true),
+                      gridData: FlGridData(
+                        show: true,
+                        drawHorizontalLine: true,
+                        
+                        horizontalInterval: 20,
+                        drawVerticalLine: false,
+                        getDrawingVerticalLine: (value) {
+                          return  FlLine(
+                            color:TColor.gray.withOpacity(0.2),
+                            strokeWidth: 2,
+                          );
+                        },
+                      ),
                       borderData: FlBorderData(
                         show: true,
                         border: Border.all(color: Colors.transparent),
@@ -931,59 +943,60 @@ class _HomeViewState extends State<HomeView> {
     });
   }
 
-   LineTouchData get lineTouchData1 => LineTouchData(
-        handleBuiltInTouches: true,
-        touchTooltipData: LineTouchTooltipData(
-          getTooltipColor: (touchedSpot) =>
-              Colors.blueGrey.withValues(alpha: 0.8),
-        ),
-      );
-       List<LineChartBarData> get lineBarsData1 => [
-        lineChartBarData1_1,
-        lineChartBarData1_2,
-        
-      ];
-       LineChartBarData get lineChartBarData1_1 => LineChartBarData(
-        isCurved: true,
-        
-        gradient: LinearGradient(colors: [TColor.primaryColor2.withOpacity(0.5),TColor.primaryColor2.withOpacity(0.5)]),
-        barWidth: 4,
-        isStrokeCapRound: true,
-        dotData: const FlDotData(show: false),
-        belowBarData: BarAreaData(show: false),
-        spots: const [
-          FlSpot(1, 10),
-          FlSpot(2, 30),
-          FlSpot(3, 50),
-          FlSpot(4, 30),
-          FlSpot(5, 5),
-          FlSpot(6, 40),
-          FlSpot(7, 100),
-        ],
-      );
+  LineTouchData get lineTouchData1 => LineTouchData(
+    handleBuiltInTouches: true,
+    touchTooltipData: LineTouchTooltipData(
+      getTooltipColor: (touchedSpot) => Colors.blueGrey.withValues(alpha: 0.8),
+    ),
+  );
+  List<LineChartBarData> get lineBarsData1 => [
+    lineChartBarData1_1,
+    lineChartBarData1_2,
+  ];
+  LineChartBarData get lineChartBarData1_1 => LineChartBarData(
+    isCurved: true,
+
+    gradient: LinearGradient(
+      colors: [
+        TColor.primaryColor2.withOpacity(0.5),
+        TColor.primaryColor2.withOpacity(0.5),
+      ],
+    ),
+    barWidth: 4,
+    isStrokeCapRound: true,
+    dotData: const FlDotData(show: false),
+    belowBarData: BarAreaData(show: false),
+    spots: const [
+      FlSpot(1, 10),
+      FlSpot(2, 30),
+      FlSpot(3, 50),
+      FlSpot(4, 30),
+      FlSpot(5, 5),
+      FlSpot(6, 40),
+      FlSpot(7, 100),
+    ],
+  );
 
   LineChartBarData get lineChartBarData1_2 => LineChartBarData(
-        isCurved: true,
-         gradient: LinearGradient(colors: [
-          TColor.secondaryColor2.withOpacity(0.5),
-          TColor.secondaryColor1.withOpacity(0.5),
-          ]),
-        barWidth: 2,
-        isStrokeCapRound: true,
-        dotData: const FlDotData(show: false),
-        belowBarData: BarAreaData(
-          show: false,
-          
-        ),
-        spots: const [
-          FlSpot(1, 50),
-          FlSpot(2, 30),
-          FlSpot(3, 10),
-          FlSpot(4, 40),
-          FlSpot(5, 80),
-          FlSpot(6, 60),
-          FlSpot(7, 40),
-        ],
-      );
-
+    isCurved: true,
+    gradient: LinearGradient(
+      colors: [
+        TColor.secondaryColor2.withOpacity(0.5),
+        TColor.secondaryColor1.withOpacity(0.5),
+      ],
+    ),
+    barWidth: 2,
+    isStrokeCapRound: true,
+    dotData: const FlDotData(show: false),
+    belowBarData: BarAreaData(show: false),
+    spots: const [
+      FlSpot(1, 50),
+      FlSpot(2, 30),
+      FlSpot(3, 10),
+      FlSpot(4, 40),
+      FlSpot(5, 80),
+      FlSpot(6, 60),
+      FlSpot(7, 40),
+    ],
+  );
 }
