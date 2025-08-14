@@ -879,11 +879,8 @@ class _HomeViewState extends State<HomeView> {
                         show: true,
                         leftTitles: AxisTitles(),
                         topTitles: AxisTitles(),
-                        bottomTitles: AxisTitles(
-                          sideTitles: bottomTitles,
-                        ),
-                        
-                        
+                        bottomTitles: AxisTitles(sideTitles: bottomTitles),
+                        rightTitles: AxisTitles(sideTitles: rightTitles),
                       ),
 
                       gridData: FlGridData(
@@ -1009,7 +1006,7 @@ class _HomeViewState extends State<HomeView> {
     ],
   );
 
-  SideTitles rightTitles() => SideTitles(
+  SideTitles get rightTitles => SideTitles(
     getTitlesWidget: rightTitleWidgets,
     showTitles: true,
     interval: 20,
@@ -1017,8 +1014,6 @@ class _HomeViewState extends State<HomeView> {
   );
 
   Widget rightTitleWidgets(double value, TitleMeta meta) {
-    const style = TextStyle(fontWeight: FontWeight.bold, fontSize: 14);
-
     String text;
     switch (value.toInt()) {
       case 0:
@@ -1043,55 +1038,51 @@ class _HomeViewState extends State<HomeView> {
         return Container();
     }
 
-    return Text(text, style: style, textAlign: TextAlign.center);
+    return Text(
+      text,
+      style: TextStyle(color: TColor.gray, fontSize: 12),
+      textAlign: TextAlign.center,
+    );
   }
 
   SideTitles get bottomTitles => SideTitles(
-        showTitles: true,
-        reservedSize: 32,
-        interval: 1,
-        getTitlesWidget: bottomTitleWidgets,
-      );
+    showTitles: true,
+    reservedSize: 32,
+    interval: 1,
+    getTitlesWidget: bottomTitleWidgets,
+  );
 
-   Widget bottomTitleWidgets(double value, TitleMeta meta) {
-    const style = TextStyle(
-      fontWeight: FontWeight.bold,
-      fontSize: 16,
-    );
+  Widget bottomTitleWidgets(double value, TitleMeta meta) {
+    var style = TextStyle(color: TColor.gray, fontSize: 12);
+
     Widget text;
     switch (value.toInt()) {
       case 1:
-        text = const Text('Sun', style: style);
+        text =  Text('Sun', style: style);
         break;
       case 2:
-        text = const Text('MOn', style: style);
+        text =  Text('MOn', style: style);
         break;
       case 3:
-        text = const Text('Tue', style: style);
+        text =  Text('Tue', style: style);
         break;
       case 4:
-        text = const Text('Wed', style: style);
+        text =  Text('Wed', style: style);
         break;
       case 5:
-        text = const Text('Thu', style: style);
+        text =  Text('Thu', style: style);
         break;
       case 6:
-        text = const Text('Fri', style: style);
+        text =  Text('Fri', style: style);
         break;
       case 7:
-        text = const Text('Sat', style: style);
+        text =  Text('Sat', style: style);
         break;
       default:
         text = const Text('');
         break;
     }
 
-    return SideTitleWidget(
-      meta: meta,
-      space: 10,
-      child: text,
-    );
+    return SideTitleWidget(meta: meta, space: 10, child: text);
   }
-
-  
 }
