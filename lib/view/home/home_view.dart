@@ -790,7 +790,19 @@ class _HomeViewState extends State<HomeView> {
                 ),
                 SizedBox(height: media.height * 0.05),
 
+                Row(children: [
+                   Text(
+                  "Workout Progress",
+                  style: TextStyle(
+                    color: TColor.black,
+                    fontSize: 16,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
+                ],),
+
                 Container(
+                  padding: const EdgeInsets.only(left: 15),
                   height: media.width * 0.4,
                   width: double.maxFinite,
 
