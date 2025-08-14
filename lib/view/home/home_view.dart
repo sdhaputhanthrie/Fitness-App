@@ -802,13 +802,34 @@ class _HomeViewState extends State<HomeView> {
                   ),
                 ),
                  Container(
-                  
+                  height: 30,
+                  padding: const EdgeInsets.symmetric(horizontal: 15),
                   decoration: BoxDecoration(
                     gradient: LinearGradient(colors: TColor.primaryG),
                     borderRadius: BorderRadius.circular(15),
                   ),
 
-                  
+                  child: DropdownButtonHideUnderline(
+            
+              child: DropdownButton(
+                items: ["Weekly","Monthly"].map((name) => DropdownMenuItem
+                                   ( value: name,
+                                    child:Text(
+                                      name,
+                                    style: TextStyle(
+                                      color: TColor.gray,fontSize: 14),
+                                      ),
+                                      ))
+                                      .toList(),
+                                      onChanged: (value){},
+                                    
+                                      hint: Text("Weekly",
+                                      style: TextStyle(
+                                      color: TColor.white,fontSize: 12),
+                                      
+                                      ),
+                                      ),
+            ),
                  ),
 
                 
