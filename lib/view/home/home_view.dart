@@ -793,48 +793,54 @@ class _HomeViewState extends State<HomeView> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                   Text(
-                  "Workout Progress",
-                  style: TextStyle(
-                    color: TColor.black,
-                    fontSize: 16,
-                    fontWeight: FontWeight.w700,
-                  ),
-                ),
-                 Container(
-                  height: 30,
-                  padding: const EdgeInsets.symmetric(horizontal: 15),
-                  decoration: BoxDecoration(
-                    gradient: LinearGradient(colors: TColor.primaryG),
-                    borderRadius: BorderRadius.circular(15),
-                  ),
+                    Text(
+                      "Workout Progress",
+                      style: TextStyle(
+                        color: TColor.black,
+                        fontSize: 16,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                    Container(
+                      height: 30,
+                      padding: const EdgeInsets.symmetric(horizontal: 15),
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(colors: TColor.primaryG),
+                        borderRadius: BorderRadius.circular(15),
+                      ),
 
-                  child: DropdownButtonHideUnderline(
-            
-              child: DropdownButton(
-                items: ["Weekly","Monthly"].map((name) => DropdownMenuItem
-                                   ( value: name,
-                                    child:Text(
-                                      name,
+                      child: DropdownButtonHideUnderline(
+                        child: DropdownButton(
+                          items: ["Weekly", "Monthly"]
+                              .map(
+                                (name) => DropdownMenuItem(
+                                  value: name,
+                                  child: Text(
+                                    name,
                                     style: TextStyle(
-                                      color: TColor.gray,fontSize: 14),
-                                      ),
-                                      ))
-                                      .toList(),
-                                      onChanged: (value){},
-                                    
-                                      hint: Text("Weekly",
-                                      style: TextStyle(
-                                      color: TColor.white,fontSize: 12),
-                                      
-                                      ),
-                                      ),
-            ),
-                 ),
-
-                
-                ],),
-
+                                      color: TColor.gray,
+                                      fontSize: 14,
+                                    ),
+                                  ),
+                                ),
+                              )
+                              .toList(),
+                          onChanged: (value) {},
+                          icon: Icon(
+                            Icons.arrow_drop_down,
+                            color: TColor.white,
+                          ),
+                          hint: Text(
+                            "Weekly",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(color: TColor.white, fontSize: 12),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(height: media.height * 0.05),
                 Container(
                   padding: const EdgeInsets.only(left: 15),
                   height: media.width * 0.4,
@@ -949,6 +955,32 @@ class _HomeViewState extends State<HomeView> {
                     ),
                   ),
                 ),
+                SizedBox(height: media.height * 0.05),
+
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      "Latest Workout",
+                      style: TextStyle(
+                        color: TColor.black,
+                        fontSize: 16,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                    TextButton(onPressed: (){}, child:Text(
+                      "See More",
+                      style: TextStyle(
+                        color: TColor.gray,
+                        fontSize: 16,
+                        
+                      ),
+                    ), ),
+
+                    
+                  ],
+                ),
+               
 
                 SizedBox(height: media.height * 0.1),
               ],
@@ -1104,25 +1136,25 @@ class _HomeViewState extends State<HomeView> {
     Widget text;
     switch (value.toInt()) {
       case 1:
-        text =  Text('Sun', style: style);
+        text = Text('Sun', style: style);
         break;
       case 2:
-        text =  Text('MOn', style: style);
+        text = Text('MOn', style: style);
         break;
       case 3:
-        text =  Text('Tue', style: style);
+        text = Text('Tue', style: style);
         break;
       case 4:
-        text =  Text('Wed', style: style);
+        text = Text('Wed', style: style);
         break;
       case 5:
-        text =  Text('Thu', style: style);
+        text = Text('Thu', style: style);
         break;
       case 6:
-        text =  Text('Fri', style: style);
+        text = Text('Fri', style: style);
         break;
       case 7:
-        text =  Text('Sat', style: style);
+        text = Text('Sat', style: style);
         break;
       default:
         text = const Text('');
