@@ -972,7 +972,8 @@ class _HomeViewState extends State<HomeView> {
                       "See More",
                       style: TextStyle(
                         color: TColor.gray,
-                        fontSize: 16,
+                        fontSize: 14,
+                        fontWeight: FontWeight.w700,
                         
                       ),
                     ), ),
