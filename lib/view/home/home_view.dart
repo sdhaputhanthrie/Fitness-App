@@ -790,7 +790,9 @@ class _HomeViewState extends State<HomeView> {
                 ),
                 SizedBox(height: media.height * 0.05),
 
-                Row(children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
                    Text(
                   "Workout Progress",
                   style: TextStyle(
@@ -799,6 +801,17 @@ class _HomeViewState extends State<HomeView> {
                     fontWeight: FontWeight.w700,
                   ),
                 ),
+                 Container(
+                  
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(colors: TColor.primaryG),
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+
+                  
+                 ),
+
+                
                 ],),
 
                 Container(
