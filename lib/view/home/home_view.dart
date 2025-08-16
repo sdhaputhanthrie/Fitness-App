@@ -14,6 +14,11 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> {
+  List lastWorkoutArr = [
+    {"name": "", "image": "", "kcal": "", "time": ""},
+    {"name": "", "image": "", "kcal": "", "time": ""},
+    {"name": "", "image": "", "kcal": "", "time": ""},
+  ];
   List<int> showingTooltipOnSpots = [21];
 
   List<FlSpot> get allSpots => const [
@@ -968,22 +973,30 @@ class _HomeViewState extends State<HomeView> {
                         fontWeight: FontWeight.w700,
                       ),
                     ),
-                    TextButton(onPressed: (){}, child:Text(
-                      "See More",
-                      style: TextStyle(
-                        color: TColor.gray,
-                        fontSize: 14,
-                        fontWeight: FontWeight.w700,
-                        
+                    TextButton(
+                      onPressed: () {},
+                      child: Text(
+                        "See More",
+                        style: TextStyle(
+                          color: TColor.gray,
+                          fontSize: 14,
+                          fontWeight: FontWeight.w700,
+                        ),
                       ),
-                    ), ),
-
-                    
+                    ),
                   ],
                 ),
-               
+                SizedBox(height: media.height * 0.05),
 
-                SizedBox(height: media.height * 0.1),
+                ListView.builder(
+                  physics: const NeverScrollableScrollPhysics(),
+                  shrinkWrap: true,
+                  itemBuilder: (context, index) {
+                    return;
+                  },
+                ),
+
+                SizedBox(height: media.height * 0.05),
               ],
             ),
           ),
