@@ -1,5 +1,6 @@
 import 'package:fitness/common/colo_extension.dart';
 import 'package:flutter/material.dart';
+import 'package:simple_animation_progress_bar/simple_animation_progress_bar.dart';
 
 class WorkoutRow extends StatelessWidget {
   final Map wObj;
@@ -7,6 +8,7 @@ class WorkoutRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var media = MediaQuery.of(context).size;
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 8),
       padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 15),
@@ -27,25 +29,40 @@ class WorkoutRow extends StatelessWidget {
             ),
           ),
 
-          const SizedBox(width: 15,),
+          const SizedBox(width: 15),
           Expanded(
             child: Column(
-              crossAxisAlignment:CrossAxisAlignment.start,
-              children: [                
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
                 Text(
                   wObj["name"].toString(),
-                  style: TextStyle(
-                    color: TColor.black,
-                    fontSize: 16, ),                
+                  style: TextStyle(color: TColor.black, fontSize: 16),
                 ),
-                 Text(
+                Text(
                   "${wObj["kcal"].toString()} Calories Burn | ${wObj["time"].toString()}minutes",
-                  style: TextStyle(
-                    color: TColor.gray,
-                    fontSize: 14,)                
+                  style: TextStyle(color: TColor.gray, fontSize: 14),
+                ),
+                const SizedBox(height: 4),
+
+                SimpleAnimationProgressBar(
+                  height: 15,
+                  width:media.width* 0.5,
+                  backgroundColor: Colors.grey.shade100,
+                  foregroundColor: Colors.purple,
+                  ratio: wObj["progress"] as double? ?? 0.5,
+                  direction: Axis.horizontal,
+                  curve: Curves.fastLinearToSlowEaseIn,
+                  duration: const Duration(seconds: 3),
+                  borderRadius: BorderRadius.circular(7.5),
+                  gradientColor: LinearGradient(
+                    colors: TColor.primaryG,
+                    begin: Alignment.centerLeft,
+                    end: Alignment.centerRight,
+                  ),
                 ),
               ],
-            ), ),
+            ),
+          ),
 
           IconButton(
             onPressed: () {},
