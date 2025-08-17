@@ -1,6 +1,7 @@
 import 'package:dotted_dashed_line/dotted_dashed_line.dart';
 import 'package:fitness/common/colo_extension.dart';
 import 'package:fitness/common_widget/round_button.dart';
+import 'package:fitness/common_widget/workout_row.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:simple_animation_progress_bar/simple_animation_progress_bar.dart';
@@ -15,9 +16,24 @@ class HomeView extends StatefulWidget {
 
 class _HomeViewState extends State<HomeView> {
   List lastWorkoutArr = [
-    {"name": "", "image": "", "kcal": "", "time": ""},
-    {"name": "", "image": "", "kcal": "", "time": ""},
-    {"name": "", "image": "", "kcal": "", "time": ""},
+    {
+      "name": "Full body Workout",
+      "image": "assets/img/Workout1.jpg",
+      "kcal": "180",
+      "time": "20",
+    },
+    {
+      "name": "Lower body Workout",
+      "image": "assets/img/Workout2.jpg",
+      "kcal": "200",
+      "time": "30",
+    },
+    {
+      "name": "Ab Workout",
+      "image": "assets/img/Workout3.jpg",
+      "kcal": "300",
+      "time": "40",
+    },
   ];
   List<int> showingTooltipOnSpots = [21];
 
@@ -991,8 +1007,10 @@ class _HomeViewState extends State<HomeView> {
                 ListView.builder(
                   physics: const NeverScrollableScrollPhysics(),
                   shrinkWrap: true,
+                  itemCount: lastWorkoutArr.length,
                   itemBuilder: (context, index) {
-                    return;
+                    var wObj = lastWorkoutArr[index] as Map? ?? {};
+                    return WorkoutRow(wObj: wObj);
                   },
                 ),
 
