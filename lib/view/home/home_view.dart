@@ -21,18 +21,21 @@ class _HomeViewState extends State<HomeView> {
       "image": "assets/img/Workout1.jpg",
       "kcal": "180",
       "time": "20",
+      "progress":"0.3",
     },
     {
       "name": "Lower body Workout",
       "image": "assets/img/Workout2.jpg",
       "kcal": "200",
       "time": "30",
+      "progress":"0.4",
     },
     {
       "name": "Ab Workout",
       "image": "assets/img/Workout3.jpg",
       "kcal": "300",
       "time": "40",
+      "progress":"0.7",
     },
   ];
   List<int> showingTooltipOnSpots = [21];
@@ -1002,9 +1005,10 @@ class _HomeViewState extends State<HomeView> {
                     ),
                   ],
                 ),
-                SizedBox(height: media.height * 0.05),
+                
 
                 ListView.builder(
+                  padding: EdgeInsets.zero,
                   physics: const NeverScrollableScrollPhysics(),
                   shrinkWrap: true,
                   itemCount: lastWorkoutArr.length,
