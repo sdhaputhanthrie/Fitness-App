@@ -26,7 +26,7 @@ class WorkoutRow extends StatelessWidget {
               fit: BoxFit.cover,
             ),
           ),
-          
+
           const SizedBox(width: 15,),
           Expanded(
             child: Column(
@@ -36,8 +36,13 @@ class WorkoutRow extends StatelessWidget {
                   wObj["name"].toString(),
                   style: TextStyle(
                     color: TColor.black,
-                    fontSize: 16,
-                    fontWeight: FontWeight.w700  ),                
+                    fontSize: 16, ),                
+                ),
+                 Text(
+                  "${wObj["kcal"].toString()} Calories Burn | ${wObj["time"].toString()}minutes",
+                  style: TextStyle(
+                    color: TColor.gray,
+                    fontSize: 14,)                
                 ),
               ],
             ), ),
