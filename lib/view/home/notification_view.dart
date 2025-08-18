@@ -104,6 +104,46 @@ class _NotificationViewState extends State<NotificationView> {
       body: ListView.separated(
         itemBuilder: ((context, index) {
           var nObj = notificationArr[index] as Map? ?? {};
+          return Row(
+            children: [
+              ClipRRect(
+                borderRadius: BorderRadius.circular(30),
+                child: Image.asset(
+                  nObj["image"].toString(),
+                  width: 60,
+                  height: 60,
+                  fit: BoxFit.cover,
+                ),
+              ),
+
+              const SizedBox(width: 15),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      nObj["name"].toString(),
+                      style: TextStyle(color: TColor.black, fontSize: 16),
+                    ),
+                    Text(
+                      nObj["time"].toString(),
+                      style: TextStyle(color: TColor.gray, fontSize: 14),
+                    ),
+                  ],
+                ),
+              ),
+
+              IconButton(
+                onPressed: () {},
+                icon: Image.asset(
+                  "assets/img/next_icon.png",
+                  width: 30,
+                  height: 30,
+                  fit: BoxFit.contain,
+                ),
+              ),
+            ],
+          );
         }),
         separatorBuilder: (context, index) {
           return Divider(color: TColor.lightGray, height: 1);
