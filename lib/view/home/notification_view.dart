@@ -10,13 +10,36 @@ class NotificationView extends StatefulWidget {
 
 class _NotificationViewState extends State<NotificationView> {
   List notificationArr = [
-    {"image": "assets/img/Workout1.jpg", "title": "Hey, it's time for lunch", "time": "About 1 minutes ago"},
-    {"image": "assets/img/Workout2.jpg", "title": "Don't miss your lowerbody workout", "time": "About 3 hours ago"},
-    {"image": "assets/img/Workout3.jpg", "title": "Hey, let's add some meals for your b", "time": "About 3 hours ago"},
-    {"image": "assets/img/Workout1.jpg", "title": "Congratulations, You have finished A..", "time": "29 May"},
-    {"image": "assets/img/Workout2.jpg", "title": "Hey, it's time for lunch", "time": "8 April"},
-    {"image": "assets/img/Workout3.jpg", "title": "Ups, You have missed your Lowerbo...", "time": "8 April"},
-
+    {
+      "image": "assets/img/Workout1.jpg",
+      "title": "Hey, it's time for lunch",
+      "time": "About 1 minutes ago",
+    },
+    {
+      "image": "assets/img/Workout2.jpg",
+      "title": "Don't miss your lowerbody workout",
+      "time": "About 3 hours ago",
+    },
+    {
+      "image": "assets/img/Workout3.jpg",
+      "title": "Hey, let's add some meals for your b",
+      "time": "About 3 hours ago",
+    },
+    {
+      "image": "assets/img/Workout1.jpg",
+      "title": "Congratulations, You have finished A..",
+      "time": "29 May",
+    },
+    {
+      "image": "assets/img/Workout2.jpg",
+      "title": "Hey, it's time for lunch",
+      "time": "8 April",
+    },
+    {
+      "image": "assets/img/Workout3.jpg",
+      "title": "Ups, You have missed your Lowerbo...",
+      "time": "8 April",
+    },
   ];
   @override
   Widget build(BuildContext context) {
@@ -78,6 +101,15 @@ class _NotificationViewState extends State<NotificationView> {
         ],
       ),
       backgroundColor: TColor.white,
+      body: ListView.separated(
+        itemBuilder: ((context, index) {
+          var nObj = notificationArr[index] as Map? ?? {};
+        }),
+        separatorBuilder: (context, index) {
+          return Divider(color: TColor.lightGray, height: 1);
+        },
+        itemCount: notificationArr.length,
+      ),
     );
   }
 }
