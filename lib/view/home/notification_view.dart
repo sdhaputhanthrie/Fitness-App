@@ -100,6 +100,7 @@ class _NotificationViewState extends State<NotificationView> {
           ),
         ],
       ),
+      
       backgroundColor: TColor.white,
       body: ListView.separated(
         itemBuilder: ((context, index) {
@@ -122,12 +123,12 @@ class _NotificationViewState extends State<NotificationView> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      nObj["name"].toString(),
-                      style: TextStyle(color: TColor.black, fontSize: 16),
+                      nObj["title"].toString(),
+                      style: TextStyle(color: TColor.black, fontSize: 14),
                     ),
                     Text(
                       nObj["time"].toString(),
-                      style: TextStyle(color: TColor.gray, fontSize: 14),
+                      style: TextStyle(color: TColor.gray, fontSize: 12),
                     ),
                   ],
                 ),
