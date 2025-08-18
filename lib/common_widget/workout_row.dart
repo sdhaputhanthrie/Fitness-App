@@ -46,10 +46,12 @@ class WorkoutRow extends StatelessWidget {
 
                 SimpleAnimationProgressBar(
                   height: 15,
-                  width:media.width* 0.5,
+                  width: media.width * 0.5,
                   backgroundColor: Colors.grey.shade100,
                   foregroundColor: Colors.purple,
-                  ratio: wObj["progress"] as double? ?? 0.5,
+                  ratio: wObj["progress"] is double
+                      ? wObj["progress"]
+                      : double.tryParse(wObj["progress"].toString()) ?? 0.5,
                   direction: Axis.horizontal,
                   curve: Curves.fastLinearToSlowEaseIn,
                   duration: const Duration(seconds: 3),
