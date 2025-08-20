@@ -103,6 +103,7 @@ class _NotificationViewState extends State<NotificationView> {
       
       backgroundColor: TColor.white,
       body: ListView.separated(
+        padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 25),
         itemBuilder: ((context, index) {
           var nObj = notificationArr[index] as Map? ?? {};
           return Row(
@@ -137,7 +138,7 @@ class _NotificationViewState extends State<NotificationView> {
               IconButton(
                 onPressed: () {},
                 icon: Image.asset(
-                  "assets/img/next_icon.png",
+                  "assets/img/sub_menu.png",
                   width: 30,
                   height: 30,
                   fit: BoxFit.contain,
@@ -147,7 +148,7 @@ class _NotificationViewState extends State<NotificationView> {
           );
         }),
         separatorBuilder: (context, index) {
-          return Divider(color: TColor.lightGray, height: 1);
+          return Divider(color: TColor.gray, height: 1);
         },
         itemCount: notificationArr.length,
       ),
