@@ -106,45 +106,48 @@ class _NotificationViewState extends State<NotificationView> {
         padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 25),
         itemBuilder: ((context, index) {
           var nObj = notificationArr[index] as Map? ?? {};
-          return Row(
-            children: [
-              ClipRRect(
-                borderRadius: BorderRadius.circular(30),
-                child: Image.asset(
-                  nObj["image"].toString(),
-                  width: 60,
-                  height: 60,
-                  fit: BoxFit.cover,
+          return Padding(
+            padding: const EdgeInsets.symmetric(vertical: 8),
+            child: Row(
+              children: [
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(30),
+                  child: Image.asset(
+                    nObj["image"].toString(),
+                    width: 60,
+                    height: 60,
+                    fit: BoxFit.cover,
+                  ),
                 ),
-              ),
-
-              const SizedBox(width: 15),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      nObj["title"].toString(),
-                      style: TextStyle(color: TColor.black, fontSize: 14),
-                    ),
-                    Text(
-                      nObj["time"].toString(),
-                      style: TextStyle(color: TColor.gray, fontSize: 12),
-                    ),
-                  ],
+            
+                const SizedBox(width: 15),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        nObj["title"].toString(),
+                        style: TextStyle(color: TColor.black, fontSize: 14),
+                      ),
+                      Text(
+                        nObj["time"].toString(),
+                        style: TextStyle(color: TColor.gray, fontSize: 12),
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-
-              IconButton(
-                onPressed: () {},
-                icon: Image.asset(
-                  "assets/img/sub_menu.png",
-                  width: 30,
-                  height: 30,
-                  fit: BoxFit.contain,
+            
+                IconButton(
+                  onPressed: () {},
+                  icon: Image.asset(
+                    "assets/img/sub_menu.png",
+                    width: 30,
+                    height: 30,
+                    fit: BoxFit.contain,
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           );
         }),
         separatorBuilder: (context, index) {
