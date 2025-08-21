@@ -1,4 +1,5 @@
 import 'package:fitness/common/colo_extension.dart';
+import 'package:fitness/common_widget/round_button.dart';
 import 'package:flutter/material.dart';
 
 class ActivityTrackerView extends StatefulWidget {
@@ -102,7 +103,59 @@ class _ActivityTrackerViewState extends State<ActivityTrackerView> {
       ),
 
       backgroundColor: TColor.white,
-      
+      body: SingleChildScrollView(
+        child: Container(
+          padding: EdgeInsets.symmetric(vertical: 25, horizontal: 25),
+          child: Column(children: [
+             Container(
+                  padding: EdgeInsets.symmetric(horizontal: 15, vertical: 15),
+                  decoration: BoxDecoration(
+                    color: TColor.primaryColor2.withOpacity(0.3),
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+
+                  child: Column(
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      
+                        children: [
+                          Text(
+                            "Today Target",
+                            style: TextStyle(
+                              color: TColor.black,
+                              fontSize: 14,
+                              fontWeight: FontWeight.w700,
+                            ),
+                          ),
+                      
+                          SizedBox(
+                            width: 90,
+                            height: 35,
+                            child: RoundButton(
+                              title: "Check",
+                              type: RoundButtonType.bgGradient,
+                              fontSize: 10,
+                              fontWeight: FontWeight.w600,
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) =>
+                                        const ActivityTrackerView(),
+                                  ),
+                                );
+                              },
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+          ]),
+        ),
+      ),
     );
   }
 }
