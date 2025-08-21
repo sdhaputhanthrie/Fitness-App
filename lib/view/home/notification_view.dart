@@ -127,7 +127,7 @@ class _NotificationViewState extends State<NotificationView> {
                     children: [
                       Text(
                         nObj["title"].toString(),
-                        style: TextStyle(color: TColor.black, fontSize: 14),
+                        style: TextStyle(color: TColor.black, fontWeight: FontWeight.w500 , fontSize: 14),
                       ),
                       Text(
                         nObj["time"].toString(),
@@ -151,7 +151,7 @@ class _NotificationViewState extends State<NotificationView> {
           );
         }),
         separatorBuilder: (context, index) {
-          return Divider(color: TColor.gray, height: 1);
+          return Divider(color: TColor.gray.withOpacity(0.5), height: 1);
         },
         itemCount: notificationArr.length,
       ),
