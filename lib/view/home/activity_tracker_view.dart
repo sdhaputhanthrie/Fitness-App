@@ -71,7 +71,7 @@ class _ActivityTrackerViewState extends State<ActivityTrackerView> {
         ),
 
         title: Text(
-          "Notification",
+          "Activity Tracker",
           style: TextStyle(
             color: TColor.black,
             fontSize: 16,
