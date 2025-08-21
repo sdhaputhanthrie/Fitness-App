@@ -106,54 +106,70 @@ class _ActivityTrackerViewState extends State<ActivityTrackerView> {
       body: SingleChildScrollView(
         child: Container(
           padding: EdgeInsets.symmetric(vertical: 25, horizontal: 25),
-          child: Column(children: [
-             Container(
-                  padding: EdgeInsets.symmetric(horizontal: 15, vertical: 15),
-                  decoration: BoxDecoration(
-                    color: TColor.primaryColor2.withOpacity(0.3),
-                    borderRadius: BorderRadius.circular(15),
-                  ),
-
-                  child: Column(
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      
-                        children: [
-                          Text(
-                            "Today Target",
-                            style: TextStyle(
-                              color: TColor.black,
-                              fontSize: 14,
-                              fontWeight: FontWeight.w700,
-                            ),
-                          ),
-                      
-                          SizedBox(
-                            width: 90,
-                            height: 35,
-                            child: RoundButton(
-                              title: "Check",
-                              type: RoundButtonType.bgGradient,
-                              fontSize: 10,
-                              fontWeight: FontWeight.w600,
-                              onPressed: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) =>
-                                        const ActivityTrackerView(),
-                                  ),
-                                );
-                              },
-                            ),
-                          ),
-                        ],
-                      ),
+          child: Column(
+            children: [
+              Container(
+                padding: EdgeInsets.symmetric(horizontal: 15, vertical: 15),
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [
+                      TColor.primaryColor2.withOpacity(0.3),
+                      TColor.primaryColor1.withOpacity(0.3),
                     ],
                   ),
+                  borderRadius: BorderRadius.circular(15),
                 ),
-          ]),
+
+                child: Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+
+                      children: [
+                        Text(
+                          "Today Target",
+                          style: TextStyle(
+                            color: TColor.black,
+                            fontSize: 14,
+                            fontWeight: FontWeight.w700,
+                          ),
+                        ),
+
+                        SizedBox(
+                          width: 30,
+                          height: 30,
+                          child: Container(
+                            decoration: BoxDecoration(
+                              gradient: LinearGradient(colors: TColor.primaryG),
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+
+                            child: MaterialButton(
+                              onPressed: () {},
+                              padding: EdgeInsets.zero,
+                              height: 30,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(25),
+                              ),
+                              textColor: TColor.primaryColor1,
+                              minWidth: double.maxFinite,
+                              elevation: 0,
+                              color: Colors.transparent,
+                              child: const Icon(
+                                Icons.add,
+                                color: Colors.white,
+                                size: 15,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
