@@ -165,6 +165,24 @@ class _ActivityTrackerViewState extends State<ActivityTrackerView> {
                         ),
                       ],
                     ),
+                    Row(children: [
+                      Container(
+                            decoration: BoxDecoration(
+                              color: TColor.white,
+                              borderRadius: BorderRadius.circular(15),
+                            ),
+
+                            child:Row(children: [
+                              Image.asset("assets/img/water.jpg",width: 40,),
+                              Expanded(child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  
+                                ],
+                              ))
+                                 
+                            ],),),
+                    ],)
                   ],
                 ),
               ),
