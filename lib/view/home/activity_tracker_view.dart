@@ -177,7 +177,41 @@ class _ActivityTrackerViewState extends State<ActivityTrackerView> {
                               Expanded(child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  
+                                   ShaderMask(
+                                    blendMode: BlendMode.srcIn,
+                                    shaderCallback: (bounds) {
+                                      return LinearGradient(
+                                        colors: TColor.primaryG,
+                                        begin: Alignment.centerLeft,
+                                        end: Alignment.centerRight,
+                                      ).createShader(
+                                        Rect.fromLTRB(
+                                          0,
+                                          0,
+                                          bounds.width,
+                                          bounds.height,
+                                        ),
+                                      );
+                                    },
+
+                                    child: Text(
+                                      "4 Liters",
+                                      style: TextStyle(
+                                        color: TColor.white.withOpacity(0.7),
+                                        fontWeight: FontWeight.w700,
+                                        fontSize: 16,
+                                      ),
+                                    ),
+                                  ),
+                                  Text(
+                                    "Water Intake",
+                                    style: TextStyle(
+                                      color: TColor.black,
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w700,
+                                    ),
+                                  ),
+                                 
                                 ],
                               ))
                                  
