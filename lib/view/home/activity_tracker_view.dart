@@ -195,7 +195,7 @@ class _ActivityTrackerViewState extends State<ActivityTrackerView> {
                                     },
 
                                     child: Text(
-                                      "4 Liters",
+                                      "8L",
                                       style: TextStyle(
                                         color: TColor.white.withOpacity(0.7),
                                         fontWeight: FontWeight.w700,
